@@ -1,56 +1,78 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('backend.back_layouts.assets')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+@section('content')
+<div class="limiter log-reg-form">
+    <div class="container-login100 page-background">
+        @if($errors->any())
+            <div class="error-wrapper">
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p>{{ $error }}</p>
+                        <a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                @endforeach
             </div>
+        @endif
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                <span class="login100-form-logo">
+                    <a href="/">
+                        <img alt="" src="../assets/img/logo-2.png">
                     </a>
-                @endif
+                </span>
+                <span class="login100-form-title p-b-34 p-t-27">
+                    Log in
+                </span>
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <input id="email" class="input100" type="email" placeholder="Email" name="email"
+                        value="{{old('email')}}" />
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                {{-- remember removed x-input --}}
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input id="password" class="input100" type="password" name="password" placeholder="Password"
+                        autocomplete="current-password" />
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+                <div class="contact100-form-checkbox">
+                    <input id="remember_me" type="checkbox" class="input-checkbox100" name="remember">
+                    <label class="label-checkbox100" for="remember_me">
+                        Remember me
+                    </label>
+                </div>
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                <!-- Validation Errors -->
+                {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+                <div class="text-center p-t-30 mb-2">
+                    @if(Route::has('password.request'))
+                        <a class="txt1 forget-pass-link underline"
+                            href="{{ route('password.request') }}">
+                            Forgot Password?
+                        </a>
+                    @endif
+                </div>
+                <div class="text-center p-t-10">
+                    <p class="text-white text-sm">Don't have an account?
+                        <a class="underline text-sm register-link" href="{{ route('register') }}">
+                            {{ __('Register') }}
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection

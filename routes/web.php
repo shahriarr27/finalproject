@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $users = User::all();
+    return view('backend.pages.dashboard')->with('users', $users);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/user-profile', [RouteController::class, 'index'])->name('profile');
+// Route::get('/add-teacher', [RouteController::class, 'addTeacher'])->name('add-teacher');
+
+Route::resource('student', StudentController::class);
+
+Route::get('status/{id}', StudentController::class, 'status');
+// Route::post('/add-teacher', [TeacherController::class, 'create'])->name('add-teacher');
