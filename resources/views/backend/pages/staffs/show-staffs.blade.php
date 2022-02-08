@@ -26,7 +26,7 @@
 					@include('backend.back_layouts.breadcrumb')
                <!-- end Breadcrumb menu -->
             {{-- @include('inc.messages') --}}
-               @if (count($students)>0)
+               @if (count($staffs)>0)
                <div class="row">
                 <div class="col-md-12">
                   <div class="tabbable-line">
@@ -51,7 +51,7 @@
                           <div class="col-md-12">
                             <div class="card card-box">
                               <div class="card-head">
-                                <header>All Students</header>
+                                <header>All Staffs</header>
                                 <div class="tools">
                                   <a class="fa fa-repeat btn-color box-refresh"
                                     href="javascript:;"></a>
@@ -101,9 +101,7 @@
                                     <thead>
                                       <tr>
                                         <th></th>
-                                        <th> ID </th>
                                         <th> Name </th>
-                                        <th> Session </th>
                                         <th> Gender </th>
                                         <th> Date of birth </th>
                                         <th> Mobile </th>
@@ -114,26 +112,23 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($students as $student)
-                                      @if ($student->approval==1)
+                                      @foreach ($staffs as $staff)
+                                      @if ($staff->approval ==1)
                                       <tr class="odd gradeX">
                                         <td class="patient-img">
-                                          <img src="{{ url('storage/profile_pictures/'.$student->profile_picture) }}"
+                                          <img src="{{ url('storage/profile_pictures/'.$staff->profile_picture) }}"
                                             alt="">
                                         </td>
-                                        <td>{{$student->student_id}}</td>
-                                        <td>{{$student->name}}</td>
-                                        <td>{{$student->student_session}}</td>
-                                        <td class="left text-capitalize">{{$student->gender}}</td>
-                                        <td class="left">{{$student->date_of_birth}}</td>
-                                        <td><a href="tel:{{$student->mobile}}">
-                                          {{$student->mobile}} </a></td>
-                                        <td><a href="mailto:{{$student->email}}">
-                                          {{$student->email}} </a></td>
-                                          
-                                        @if (Auth::user()->admin_role == 'super_admin')
-                                        <td>
-                                          <a href="users/{{$student->id}}/edit"
+                                        <td>{{$staff->name}}</td>
+                                        <td class="left text-capitalize">{{$staff->gender}}</td>
+                                        <td class="left">{{$staff->date_of_birth}}</td>
+                                        <td><a href="tel:{{$staff->mobile}}">
+                                          {{$staff->mobile}} </a></td>
+                                        <td><a href="mailto:{{$staff->email}}">
+                                          {{$staff->email}} </a></td>
+                                          @if (Auth::user()->admin_role == 'super_admin')
+                                          <td>
+                                          <a href="users/{{$staff->id}}/edit"
                                             class="btn btn-primary btn-xs">
                                             <i class="fa fa-pencil"></i>
                                           </a>
@@ -157,20 +152,20 @@
                       </div>
                       <div class="tab-pane" id="tab2">
                         <div class="row">
-                          @foreach ($students as $student)
+                          @foreach ($staffs as $staff)
                           <div class="col-md-4">
                             <div class="card card-box">
                               <div class="card-body no-padding ">
                                 <div class="doctor-profile">
-                                  <img src="{{ url('storage/profile_pictures/'.$student->profile_picture) }}" class="doctor-pic"
+                                  <img src="{{ url('storage/profile_pictures/'.$staff->profile_picture) }}" class="doctor-pic"
                                     alt="">
                                   <div class="profile-usertitle">
-                                    <div class="doctor-name">{{$student->name}}</div>
+                                    <div class="doctor-name">{{$staff->name}}</div>
                                   </div>
-                                  <p>{{$student->address}}</p>
+                                  <p>{{$staff->address}}</p>
                                   <div>
-                                    <p><i class="fa fa-phone"></i><a href="tel:{{$student->mobile}}">
-                                      {{$student->mobile}} </a></p>
+                                    <p><i class="fa fa-phone"></i><a href="tel:{{$staff->mobile}}">
+                                      {{$staff->mobile}} </a></p>
                                   </div>
                                   <div class="profile-userbuttons">
                                     <a href="professor_profile.html"

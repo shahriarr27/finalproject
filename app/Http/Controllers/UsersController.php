@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 
-
-class StudentController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::orderBy('id', 'desc')
-        ->get()->where('reg_type', 'student' );
-        
-        return view('backend.pages.students.show-students')->with('students', $students);
+        return view('backend.pages.dashboard');
     }
 
     /**
@@ -52,9 +46,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        // $info = User::where('id', $id)->get();
+        // return view('backend.back_layouts.approve')->with('info', $info);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +58,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $info = User::where('id', $id)->get();
+        return view('backend.back_layouts.approve')->with('info', $info);
     }
 
     /**
@@ -76,7 +71,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->approval = $request->approval;
+        $user->update();
+        if($user->approval ==1){
+            return redirect('/dashboard')->with('success', $user->name.'\'s registration has been approved!');
+        }
+        elseif($user->approval ==0){
+            return redirect('/dashboard')->with('success', $user->name.'\'s registration has been Canceled!');
+        }
     }
 
     /**

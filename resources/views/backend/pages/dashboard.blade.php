@@ -25,7 +25,14 @@
                {{-- Breadcrumb start --}}
 					@include('backend.back_layouts.breadcrumb')
                <!-- end Breadcrumb menu -->
-					@include('inc.message')
+							 @if (session()->has('success'))
+										<div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+												<p>{{session()->get('success')}}</p>
+												<a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+												</a>
+										</div>
+								@endif
 					<!-- start widget -->
 					<div class="state-overview">
 						<div class="row">
@@ -399,11 +406,12 @@
 					</div>
 					<!-- End course list -->
 					<!-- start new student list -->
+					@if (Auth::user()->admin_role == 'super_admin')
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="card  card-box">
 								<div class="card-head">
-									<header>New Users List</header>
+									<header>New Users Registration List</header>
 									<div class="tools">
 										<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 										<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -426,30 +434,35 @@
 												</thead>
 												<tbody>
 													@foreach ($users as $user)
-													<tr>
-														<td><a href="#">{{$user->name}}</a></td>
-														<td class="text-capitalize">{{$user->reg_type}}</td>
-														<td>@if($user->reg_type == 'teacher')
-																<span>{{$user->designation}}</span>
-																@elseif($user->reg_type == 'student')
-																<span>{{$user->student_session}}</span>
+													@if ($user->approval ==0)
+														<tr>
+															<td><a href="#">{{$user->name}}</a></td>
+															<td class="text-capitalize">{{$user->reg_type}}</td>
+															<td>@if($user->reg_type == 'teacher')
+																	<span>{{$user->designation}}</span>
+																	@elseif($user->reg_type == 'student')
+																	<span>{{$user->student_session}}</span>
+																	@else
+																	<span>Staff</span>
+																	@endif
+															</td>
+															<td>{{$user->created_at->format('d/m/Y')}}</td>
+															<td>
+																@if($user->approval == 0)
+																<span class="label label-sm bg-danger">Waiting</span>
 																@else
-																<span>Staff</span>
+																<span class="label label-sm bg-success">Approved</span>
 																@endif
-														</td>
-														<td>{{$user->created_at->format('d/m/Y')}}</td>
-														<td>
-															@if($user->approval == 0)
-															<span class="label label-sm label-alert">Waiting</span>
-															@else
-															<span class="label label-sm label-success">Approved</span>
+															</td>
+															<td>
+																	<a href="users/{{$user->id}}/edit" class="" data-bs-toggle="tooltip"
+																		title="Approve"><i class="fa fa-check"></i></a>
+																		
+																	<a href="javascript:void(0)" class="text-inverse" title="Delete"
+																		data-bs-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+																	
 															@endif
-														</td>
-														<td><a href="{{route('status', ['id'=>$user->$id])}}" class="" data-bs-toggle="tooltip"
-																title="Edit"><i class="fa fa-check"></i></a>
-															<a href="javascript:void(0)" class="text-inverse" title="Delete"
-																data-bs-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
-													</tr>
+														</tr>
 													@endforeach
 												</tbody>
 											</table>
@@ -459,6 +472,8 @@
 							</div>
 						</div>
 					</div>
+							
+					@endif
 					<!-- end new student list -->
 				</div>
 

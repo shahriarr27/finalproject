@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 
-
-class StudentController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::orderBy('id', 'desc')
-        ->get()->where('reg_type', 'student' );
+        $staffs = User::orderBy('id', 'desc')
+        ->get()->where('reg_type', 'staff' );
         
-        return view('backend.pages.students.show-students')->with('students', $students);
+        return view('backend.pages.staffs.show-staffs')->with('staffs', $staffs);
     }
 
     /**
@@ -54,7 +51,6 @@ class StudentController extends Controller
     {
         //
     }
-
 
     /**
      * Show the form for editing the specified resource.

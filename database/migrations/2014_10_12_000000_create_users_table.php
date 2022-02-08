@@ -25,11 +25,11 @@ class CreateUsersTable extends Migration
             $table->string('mobile');
             $table->string('profile_picture');
             $table->enum('gender', ['Male', 'Female']);
-            $table->enum('reg_type', ['Teacher', 'Student', 'Staff']);
+            $table->enum('reg_type', ['Teacher', 'Student', 'Staff', 'Super Admin']);
             $table->string('designation')->nullable();
             $table->integer('student_id')->nullable();
             $table->string('student_session')->nullable();
-            $table->boolean('approval')->nullable();
+            $table->boolean('approval')->default(0)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

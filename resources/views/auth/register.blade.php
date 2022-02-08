@@ -127,6 +127,7 @@
                             <option value="teacher">Teacher</option>
                             <option value="student">Student</option>
                             <option value="staff">Staff</option>
+                            <option value="super_admin" hidden>Super Admin</option>
                         </select>
                     </div>
                     <div id="teacher_fields" style="display:none;">

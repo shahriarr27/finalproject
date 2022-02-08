@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -21,8 +22,10 @@ class RegisteredUserController extends Controller
 
     public function index()
     {
-        $users = User::all();
-        return view('backend.pages.dashboard')->name('users', $users);
+        $users = DB::table('users')
+        ->orderBy('id', 'desc')
+        ->get();
+        return view('backend.pages.dashboard')->with('users', $users);
     }
 
     public function create()
@@ -86,5 +89,4 @@ class RegisteredUserController extends Controller
         // $users = $request->all();
         return redirect(RouteServiceProvider::HOME);
     }
-
 }

@@ -27,6 +27,14 @@
                 <span class="login100-form-title p-b-34 p-t-27">
                     Log in
                 </span>
+                @if (session()->has('approvalMessage'))
+                    <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+                        <p>{{session()->get('approvalMessage')}}</p>
+                        <a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                @endif
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
                     <input id="email" class="input100" type="email" placeholder="Email" name="email"
                         value="{{old('email')}}" />

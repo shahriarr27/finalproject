@@ -39,13 +39,8 @@
               </a>
               <ul class="sub-menu">
                  <li class="nav-item">
-                    <a href="" class="nav-link "> <span class="title">All
+                    <a href="/teachers" class="nav-link "> <span class="title">All
                           Professors</span>
-                    </a>
-                 </li>
-                 <li class="nav-item">
-                    <a href="" class="nav-link "> <span class="title">Add
-                          Professor</span>
                     </a>
                  </li>
               </ul>
@@ -57,11 +52,6 @@
                  <li class="nav-item">
                     <a href="{{route('student.index')}}" class="nav-link "> <span class="title">All
                           Students</span>
-                    </a>
-                 </li>
-                 <li class="nav-item">
-                    <a href="add_student.html" class="nav-link "> <span class="title">Add
-                          Student</span>
                     </a>
                  </li>
               </ul>
@@ -90,12 +80,8 @@
               </a>
               <ul class="sub-menu">
                  <li class="nav-item">
-                    <a href="all_staffs.html" class="nav-link "> <span class="title">All
+                    <a href="/staffs" class="nav-link "> <span class="title">All
                           Staff</span>
-                    </a>
-                 </li>
-                 <li class="nav-item">
-                    <a href="add_staff.html" class="nav-link "> <span class="title">Add Staff</span>
                     </a>
                  </li>
               </ul>
