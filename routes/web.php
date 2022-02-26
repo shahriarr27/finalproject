@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\User;
 
@@ -32,11 +33,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Route::get('/user-profile', [RouteController::class, 'index'])->name('profile');
-// Route::get('/add-teacher', [RouteController::class, 'addTeacher'])->name('add-teacher');
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('student', StudentController::class);
+    Route::resource('users', UsersController::class);
+    Route::resource('teachers', TeacherController::class);
+    Route::resource('staffs', StaffController::class);
+    Route::resource('courses', CourseController::class);
 
-Route::resource('student', StudentController::class);
-
-Route::resource('users', UsersController::class);
-Route::resource('teachers', TeacherController::class);
-Route::resource('staffs', StaffController::class);
+    // Route::get('courses/dropDownShow', [CourseController::class, 'dropDownShow']);
+ });

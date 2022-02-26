@@ -1,3 +1,25 @@
 #select-type option{
     text-transform: capitalize;
 }
+.mdl-menu__outline{
+    box-shadow: none !important;
+}
+.mdl-menu__container{
+    background: white;
+    box-shadow: 0px 5px 5px rgb(0 0 0 / 20%);
+}
+
+.ck-editor__editable{
+    min-height: 150px;
+}
+
+#biography table{
+    width: 100%;
+}
+
+#biography tbody, td, tfoot, th, thead, tr{
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 15px !important;
+}

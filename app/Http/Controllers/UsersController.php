@@ -14,7 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.dashboard');
+        $nausers = User::get();
+        return view('backend.pages.dashboard')->with('nausers', $nausers);
     }
 
     /**

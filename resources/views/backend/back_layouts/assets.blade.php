@@ -111,7 +111,7 @@
 	<!-- notifications -->
 	<script src="{{asset('../assets/plugins/jquery-toast/dist/jquery.toast.min.js')}}"></script>
 	<script src="{{asset('../assets/plugins/jquery-toast/dist/toast.js')}}"></script>
-
+	<script src="{{asset('https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js')}}"></script>
 	<script src="{{asset('../assets/js/myscripts.js')}}"></script>
 	<!-- end js include path -->
 	<!-- end js include path -->

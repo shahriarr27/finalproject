@@ -1,4 +1,9 @@
 // Put this script in header or above select element
+ClassicEditor.create( document.querySelector( '.ckeditor' ) )
+  .catch( error => {
+    console.error( error );
+} );
+
 function check(elem) {
   // use one of possible conditions
   // if (elem.value == 'Other')
@@ -27,3 +32,4 @@ fileInput.onchange = function() {
 	let selectName = document.getElementsByClassName("file-select-name")[0];
   selectName.innerText = filename;
 }
+

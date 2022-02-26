@@ -63,12 +63,12 @@
               </a>
               <ul class="sub-menu">
                  <li class="nav-item">
-                    <a href="all_courses.html" class="nav-link "> <span class="title">All
+                    <a href="{{route('courses.index')}}" class="nav-link "> <span class="title">All
                           Courses</span>
                     </a>
                  </li>
                  <li class="nav-item">
-                    <a href="add_course.html" class="nav-link "> <span class="title">Add
+                    <a href="courses/create" class="nav-link "> <span class="title">Add
                           Course</span>
                     </a>
                  </li>
