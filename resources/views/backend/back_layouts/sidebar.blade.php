@@ -34,6 +34,20 @@
               </a>
            </li>
            <li class="nav-item">
+              <a href="#" class="nav-link nav-toggle"><i class="material-icons">event</i>
+                 <span class="title">Class Schedules</span><span class="arrow"></span></a>
+              <ul class="sub-menu">
+                 <li class="nav-item">
+                    <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
+                    </a>
+                 </li>
+                 <li class="nav-item">
+                    <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
+                    </a>
+                 </li>
+              </ul>
+           </li>
+           <li class="nav-item">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                  <span class="title">Professors</span> <span class="arrow"></span>
               </a>

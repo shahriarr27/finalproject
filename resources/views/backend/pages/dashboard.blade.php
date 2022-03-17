@@ -40,14 +40,11 @@
 								<div class="info-box bg-green">
 									<span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">Total Students</span>
-										<span class="info-box-number">450</span>
+										<span class="info-box-text">Total Users</span>
+										<span class="info-box-number">{{count($users)}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: 45%"></div>
+											<div class="progress-bar" style="width: {{count($users)}}%"></div>
 										</div>
-										<span class="progress-description">
-											45% Increase in 28 Days
-										</span>
 									</div>
 									<!-- /.info-box-content -->
 								</div>
@@ -59,13 +56,10 @@
 									<span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
 									<div class="info-box-content">
 										<span class="info-box-text">New Students</span>
-										<span class="info-box-number">155</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'student'))}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: 40%"></div>
+											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'student'))}}%"></div>
 										</div>
-										<span class="progress-description">
-											40% Increase in 28 Days
-										</span>
 									</div>
 									<!-- /.info-box-content -->
 								</div>
@@ -76,14 +70,11 @@
 								<div class="info-box bg-blue">
 									<span class="info-box-icon push-bottom"><i class="material-icons">school</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">Total Course</span>
-										<span class="info-box-number">52</span>
+										<span class="info-box-text">Total Teachers</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'teacher'))}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: 85%"></div>
+											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'teacher'))}}%"></div>
 										</div>
-										<span class="progress-description">
-											85% Increase in 28 Days
-										</span>
 									</div>
 									<!-- /.info-box-content -->
 								</div>
@@ -94,14 +85,11 @@
 								<div class="info-box bg-danger">
 									<span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">Fees Collection</span>
-										<span class="info-box-number">13,921</span><span>$</span>
+										<span class="info-box-text">Total Staff</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'staff'))}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: 50%"></div>
+											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'staff'))}}%"></div>
 										</div>
-										<span class="progress-description">
-											50% Increase in 28 Days
-										</span>
 									</div>
 									<!-- /.info-box-content -->
 								</div>
@@ -329,82 +317,6 @@
 						</div>
 						<!-- Activity feed end -->
 					</div>
-					<!-- start course list -->
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-12 col-sm-6">
-							<div class="blogThumb">
-								<div class="thumb-center"><img class="img-responsive" alt="user"
-										src="../assets/img/course/course1.jpg"></div>
-								<div class="course-box">
-									<h4>PHP Development Course</h4>
-									<div class="text-muted"><span class="m-r-10">April 23</span>
-										<a class="course-likes m-l-10" href="#"><i class="fa fa-heart-o"></i> 654</a>
-									</div>
-									<p><span><i class="ti-alarm-clock"></i> Duration: 6 Months</span></p>
-									<p><span><i class="ti-user"></i> Professor: Jane Doe</span></p>
-									<p><span><i class="fa fa-graduation-cap"></i> Students: 200+</span></p>
-									<button type="button"
-										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
-										More</button>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12 col-sm-6 ">
-							<div class="blogThumb">
-								<div class="thumb-center"><img class="img-responsive" alt="user"
-										src="../assets/img/course/course2.jpg"></div>
-								<div class="course-box">
-									<h4>PHP Development Course</h4>
-									<div class="text-muted"><span class="m-r-10">April 23</span>
-										<a class="course-likes m-l-10" href="#"><i class="fa fa-heart-o"></i> 654</a>
-									</div>
-									<p><span><i class="ti-alarm-clock"></i> Duration: 6 Months</span></p>
-									<p><span><i class="ti-user"></i> Professor: Jane Doe</span></p>
-									<p><span><i class="fa fa-graduation-cap"></i> Students: 200+</span></p>
-									<button type="button"
-										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
-										More</button>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12 col-sm-6">
-							<div class="blogThumb">
-								<div class="thumb-center"><img class="img-responsive" alt="user"
-										src="../assets/img/course/course3.jpg"></div>
-								<div class="course-box">
-									<h4>PHP Development Course</h4>
-									<div class="text-muted"><span class="m-r-10">April 23</span>
-										<a class="course-likes m-l-10" href="#"><i class="fa fa-heart-o"></i> 654</a>
-									</div>
-									<p><span><i class="ti-alarm-clock"></i> Duration: 6 Months</span></p>
-									<p><span><i class="ti-user"></i> Professor: Jane Doe</span></p>
-									<p><span><i class="fa fa-graduation-cap"></i> Students: 200+</span></p>
-									<button type="button"
-										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
-										More</button>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-12 col-sm-6">
-							<div class="blogThumb">
-								<div class="thumb-center"><img class="img-responsive" alt="user"
-										src="../assets/img/course/course4.jpg"></div>
-								<div class="course-box">
-									<h4>PHP Development Course</h4>
-									<div class="text-muted"><span class="m-r-10">April 23</span>
-										<a class="course-likes m-l-10" href="#"><i class="fa fa-heart-o"></i> 654</a>
-									</div>
-									<p><span><i class="ti-alarm-clock"></i> Duration: 6 Months</span></p>
-									<p><span><i class="ti-user"></i> Professor: Jane Doe</span></p>
-									<p><span><i class="fa fa-graduation-cap"></i> Students: 200+</span></p>
-									<button type="button"
-										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
-										More</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End course list -->
 					<!-- start new student list -->
 					@if (Auth::user()->admin_role == 'super_admin')
 					<div class="row">

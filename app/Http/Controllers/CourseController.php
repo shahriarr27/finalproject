@@ -151,7 +151,7 @@ class CourseController extends Controller
 
         $edit_course->update();
 
-        return redirect()->action([CourseController::class, 'show'])->with('success', 'Course '.$edit_course->course_code.' updated successfully!');
+        return redirect()->action([CourseController::class, 'index'])->with('success', 'Course '.$edit_course->course_code.' updated successfully!');
 
     }
 

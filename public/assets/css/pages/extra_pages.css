@@ -58,7 +58,18 @@ p {
 
 ul, li {
 	margin: 0px;
-	list-style-type: auto !important;
+	list-style-type: none;
+}
+
+.ck-editor__main ul, .ck-editor__main li {
+	margin: 0px;
+	list-style: inherit !important;
+}
+
+
+.ck-editor__main ol li {
+	margin: 0px;
+	list-style: auto !important;
 }
 
 

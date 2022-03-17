@@ -4,6 +4,8 @@ ClassicEditor.create( document.querySelector( '.ckeditor' ) )
     console.error( error );
 } );
 
+
+
 function check(elem) {
   // use one of possible conditions
   // if (elem.value == 'Other')
@@ -32,4 +34,5 @@ fileInput.onchange = function() {
 	let selectName = document.getElementsByClassName("file-select-name")[0];
   selectName.innerText = filename;
 }
+
 

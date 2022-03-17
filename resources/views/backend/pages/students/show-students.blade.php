@@ -94,9 +94,23 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="table-scrollable">
+                                <div class="result-table">
+                                  <div class="row">
+                                    <div class="col-lg-3">
+                                      <div class="search-wrapper p-3">
+                                        <label for="">Select Session</label>
+                                        <select name="" id="session-filter" class="custom-select filter">
+                                          <option value="">Select Session</option>
+                                          @foreach ($session as $student_session)
+                                          <option value="{{$student_session->student_session}}">{{$student_session->student_session}}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-6"></div>
+                                  </div>
                                   <table
-                                    class="table table-borderless table-stripped table-hover order-column valign-middle"
+                                    class="table table-borderless table-hover order-column valign-middle"
                                     id="example4">
                                     <thead>
                                       <tr>

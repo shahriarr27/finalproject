@@ -7,6 +7,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta name="description" content="Responsive Admin Template" />
 	<meta name="author" content="SmartUniversity" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Smart University | Dashboard</title>
 
 	{{-- App style --}}
@@ -51,7 +52,7 @@
 	<!-- Jquery Toast css -->
 	<link rel="stylesheet" href="{{asset('../assets/plugins/jquery-toast/dist/jquery.toast.min.css')}}">
 
-	
+	@livewireStyles
 
 	<!-- favicon -->
 	<link rel="shortcut icon" href="{{asset('../assets/img/logo-2.png')}}" />
@@ -112,7 +113,9 @@
 	<script src="{{asset('../assets/plugins/jquery-toast/dist/jquery.toast.min.js')}}"></script>
 	<script src="{{asset('../assets/plugins/jquery-toast/dist/toast.js')}}"></script>
 	<script src="{{asset('https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js')}}"></script>
+	@livewireScripts
 	<script src="{{asset('../assets/js/myscripts.js')}}"></script>
+	<script src="{{asset('../assets/js/newscripts.js')}}"></script>
 	<!-- end js include path -->
 	<!-- end js include path -->
 </body>

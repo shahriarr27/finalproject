@@ -44,9 +44,24 @@ $(document).ready(function () {
   // Automatically add a first row of data
   $("#addRow").click();
 
-  $("#example4").DataTable({
-    columnDefs: [{ width: 10, targets: 0 }],
+ let dataTable =  $("#example4").DataTable({
+    "columnDefs": [
+      {
+          "targets": 0,
+          "visible": false
+      }
+    ],
+    columnDefs: [{ width: 9, targets: 0 }],
   });
+
+  $('#session-filter').on('change', function(e){
+    var status = $(this).val();
+    $('#session-filter').val(status)
+    console.log(status)
+    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+    dataTable.column(3).search(status).draw();
+  })
+
 
   $("#saveStage").DataTable({
     stateSave: true,

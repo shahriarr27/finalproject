@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\DB;
 
-
-class StudentController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::orderBy('id', 'desc')
-        ->get()->where('reg_type', 'student' );
-        
-        $session = User::where('reg_type', 'student' )
-        ->distinct()
-        ->get('student_session');
-        return view('backend.pages.students.show-students')->with(['students' => $students, 'session'=> $session]);
+        return view('backend.pages.schedule.show-schedule');
     }
 
     /**
@@ -34,7 +26,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $getyear=DB::table('course')->select('course_year')->groupBy('course_year')->orderBy('course_year','asc')->get();
+        $technames = User::get()->where('reg_type', 'teacher');
+        return view('backend.pages.schedule.create-schedule')->with(['technames'=> $technames, 'getyear'=> $getyear]);
     }
 
     /**
@@ -51,22 +45,21 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Schedule $schedule)
     {
         //
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Schedule $schedule)
     {
         //
     }
@@ -75,10 +68,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Schedule $schedule)
     {
         //
     }
@@ -86,11 +79,16 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Schedule $schedule)
     {
         //
     }
+
+    public function getyear(){
+		$getyear=DB::table('course')->orderBy('course_year','asc')->get();
+		return view('backend.pages.schedule.create-schedule')->with('getyear', $getyear);
+	}
 }

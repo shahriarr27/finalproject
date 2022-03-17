@@ -6,6 +6,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\User;
 
@@ -28,7 +30,8 @@ Route::get('/dashboard', function () {
 
     $users = User::orderBy('id', 'desc')
     ->get();
-    return view('backend.pages.dashboard')->with('users', $users);
+    $count_student = User::where('reg_type', 'student')->get();
+    return view('backend.pages.dashboard')->with(['users'=> $users, 'count_student'=>$count_student]);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -39,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('teachers', TeacherController::class);
     Route::resource('staffs', StaffController::class);
     Route::resource('courses', CourseController::class);
-
-    // Route::get('courses/dropDownShow', [CourseController::class, 'dropDownShow']);
+    Route::resource('schedule', ScheduleController::class);
  });
+
+ Route::post('dropdown/fetch', [DropdownController::class, 'fetch']);
