@@ -45,6 +45,10 @@
                     <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
                     </a>
                  </li>
+                 <li class="nav-item">
+                    <a href="{{route('1-1schedule')}}" class="nav-link "> <span class="title">1st Year 1st Semester</span>
+                    </a>
+                 </li>
               </ul>
            </li>
            <li class="nav-item">

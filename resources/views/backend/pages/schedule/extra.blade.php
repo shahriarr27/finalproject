@@ -1,420 +1,306 @@
-@extends('backend.back_layouts.assets')
 
-@section('content')
+                          <table class="table table-bordered table-hover bg-light mt-4 class-schedule-table">
+                            
+                            <thead>
+                                <th class="w-20 text-center">Day/Time</th>
+                                <th class="text-sm text-center">09:00 AM - 10:00 AM</th>
+                                <th class="text-sm text-center">10:00 AM - 11:00 AM</th>
+                                <th class="text-sm text-center">11:00 AM - 12:00 PM</th>
+                                <th class="text-sm text-center">12:00 PM - 01:00 PM</th>
+                                <th class="text-sm text-center">02:00 PM - 03:00 PM</th>
+                                <th class="text-sm text-center">03:00 PM - 04:00 PM</th>
+                                <th class="text-sm text-center">04:00 PM - 05:00 PM</th>
+                                {{-- @foreach ($schedules as $item)
+                                  @if ($item->course_year == 1 && $item->course_semester == 1)
+                                    <th class="text-center text-sm th-time">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</th>
+                                  @endif
+                                @endforeach --}}
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>Sunday</td>
+                                    @foreach ($schedules as $item)
+                                        @if ($item->course_year == 1 && $item->course_semester == 1)
+                                        <td>
+                                            @if ($item->schedule_day == 'sun')
+                                              {{-- @if ($item->course_year == 1 && $item->course_semester == 1)
+                                                <div class="text-center text-sm th-time fw-bold">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</div>
+                                              @endif --}}
+                                              {{-- <hr class="m-0 mt-2"> --}}
+                                                  <div class="class-details">
+                                                      <p class="ccode">{{$item->course_code}}</p>
+                                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                                      <p class="tname">John Doe</p>
+                                                      <p class="rno">Room: {{$item->schedule_room}}</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                          @endif
+                                    @endforeach
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Monday</td>
+                                    @foreach ($schedules as $item)
+                                        @if ($item->course_year == 1 && $item->course_semester == 1)
+                                        <td>
+                                              @if ($item->schedule_day == 'mon')
+                                              {{-- @if ($item->course_year == 1 && $item->course_semester == 1)
+                                              <div class="text-center text-sm th-time fw-bold">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</div>
+                                            @endif --}}
+                                            {{-- <hr class="m-0 mt-2"> --}}
+                                                  <div class="class-details">
+                                                      <p class="ccode">{{$item->course_code}}</p>
+                                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                                      <p class="tname">John Doe</p>
+                                                      <p class="rno">Room: {{$item->schedule_room}}</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                          @endif
+                                    @endforeach
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Tuesday</td>
+                                    @foreach ($schedules as $item)
+                                        @if ($item->course_year == 1 && $item->course_semester == 1)
+                                        <td>
+                                              @if ($item->schedule_day == 'tue')
+                                                  <div class="class-details">
+                                                      <p class="ccode">{{$item->course_code}}</p>
+                                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                                      <p class="tname">John Doe</p>
+                                                      <p class="rno">Room: {{$item->schedule_room}}</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                          @endif
+                                    @endforeach
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Wednesday</td>
+                                    @foreach ($schedules as $item)
+                                        @if ($item->course_year == 1 && $item->course_semester == 1)
+                                        <td>
+                                              @if ($item->schedule_day == 'wed')
+                                                  <div class="class-details">
+                                                      <p class="ccode">{{$item->course_code}}</p>
+                                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                                      <p class="tname">John Doe</p>
+                                                      <p class="rno">Room: {{$item->schedule_room}}</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                          @endif
+                                    @endforeach
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Thursday</td>
+                                    @foreach ($schedules as $item)
+                                        @if ($item->course_year == 1 && $item->course_semester == 1)
+                                        <td>
+                                              @if ($item->schedule_day == 'thr')
+                                                  <div class="class-details">
+                                                      <p class="ccode">{{$item->course_code}}</p>
+                                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                                      <p class="tname">John Doe</p>
+                                                      <p class="rno">Room: {{$item->schedule_room}}</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                          @endif
+                                    @endforeach
+                                </tr>
+                            </tbody>
+                        </table>
 
-<div class="page-wrapper">
 
-    <!-- start header -->
-    @include('backend.back_layouts.header')
-    <!-- end header -->
 
-    <!-- start color quick setting -->
-    @include('backend.back_layouts.settings')
-    <!-- end color quick setting -->
 
-    <!-- start page container -->
-    <div class="page-container">
 
-        <!-- start sidebar menu -->
-        @include('backend.back_layouts.sidebar')
-        <!-- end sidebar menu -->
 
-        <!-- start page content -->
-        <div class="page-content-wrapper">
-            <div class="page-content">
-                {{-- Breadcrumb start --}}
-                @include('backend.back_layouts.breadcrumb')
-                <!-- end Breadcrumb menu -->
-                @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
-                        <p>{{ session()->get('success') }}</p>
-                        <a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </a>
-                    </div>
-                @endif
-                <!-- start widget -->
 
-                <div class='centered'>
-                    <div id='schedule'>
-                        <div class='s-legend'>
-                            <div class='s-cell s-head-info'>
-                                <div class='s-name'>TT</div>
-                            </div>
-                            <div class='s-week-day s-cell'>
-                                <div class='s-day'>Mon</div>
-                            </div>
-                            <div class='s-week-day s-cell'>
-                                <div class='s-day'>Tue</div>
-                            </div>
-                            <div class='s-week-day s-cell'>
-                                <div class='s-day'>Wed</div>
-                            </div>
-                            <div class='s-week-day s-cell'>
-                                <div class='s-day'>Thu</div>
-                            </div>
-                            <div class='s-week-day s-cell'>
-                                <div class='s-day'>Fri</div>
-                            </div>
-                        </div>
-                        <div class='s-container s-block'>
-                            <div class='s-head-info'>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>0</div>
-                                    <div class='s-hourly-interval'>7.10-7.55</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>1</div>
-                                    <div class='s-hourly-interval'>8.00 - 8.45</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>2</div>
-                                    <div class='s-hourly-interval'>8.50 - 9.35</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>3</div>
-                                    <div class='s-hourly-interval'>9.45 - 10.30</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>4</div>
-                                    <div class='s-hourly-interval'>10.50 - 11.35</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>5</div>
-                                    <div class='s-hourly-interval'>11.45 - 12.30</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>6</div>
-                                    <div class='s-hourly-interval'>12.50 - 13.35</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>7</div>
-                                    <div class='s-hourly-interval'>13.45 - 14.30</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>8</div>
-                                    <div class='s-hourly-interval'>14.35 - 15.20</div>
-                                </div>
-                                <div class='s-head-hour'>
-                                    <div class='s-number'>9</div>
-                                    <div class='s-hourly-interval'>15.25 - 16.10</div>
-                                </div>
-                            </div>
-                            <div class='s-rows-container'>
-                                <div class='s-activities'>
-                                    <div class='s-act-row'>
-                                        <div class='s-act-tab green' data-hours='7.32-8.45'>
-                                            <div class='s-act-name'>English</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>A. Rygulska</div>
-                                                <div class='s-act-room'>105</div>
-                                                <div class='s-act-group'>G1</div>
-                                            </div>
+
+
+
+
+
+
+
+                        ------------------------------------
+
+                        @foreach ($schedules as $item)
+                                  @if ($item->course_year == 1 && $item->course_semester == 1)
+                                    <tr>
+                                      <td>{{$item->schedule_day}}</td>
+                                      <td>
+                                        <div class="class-details">
+                                          <p class="ccode">{{$item->course_code}}</p>
+                                          <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                          <p class="tname">John Doe</p>
+                                          <p class="rno">Room: {{$item->schedule_room}}</p>
                                         </div>
-                                        <div class='s-act-tab orange' data-hours='9.45-12.50'>
-                                            <div class='s-act-name'>Math</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
-                                        <div class='s-act-tab green' data-hours='13.45-14.30'>
-                                            <div class='s-act-name'>Math</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
+                                    </td>
+                                    <td>
+                                      <div class="class-details">
+                                        <p class="ccode">{{$item->course_code}}</p>
+                                        <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                        <p class="tname">John Doe</p>
+                                        <p class="rno">Room: {{$item->schedule_room}}</p>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="class-details">
+                                        <p class="ccode">{{$item->course_code}}</p>
+                                        <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                        <p class="tname">John Doe</p>
+                                        <p class="rno">Room: {{$item->schedule_room}}</p>
+                                      </div>
+                                  </td>
+                                  <td>
+                                    <div class="class-details">
+                                      <p class="ccode">{{$item->course_code}}</p>
+                                      <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                      <p class="tname">John Doe</p>
+                                      <p class="rno">Room: {{$item->schedule_room}}</p>
                                     </div>
-                                    <div class='s-act-row'>
-                                        <div class='s-act-tab blue' data-hours='8.50-9.35'>
-                                            <div class='s-act-name'>Exam</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>A. Rygulska</div>
-                                                <div class='s-act-room'>105</div>
-                                                <div class='s-act-group'>G1</div>
-                                            </div>
-                                        </div>
-                                        <div class='s-act-tab black' data-hours='10.50-11.35'>
-                                            <div class='s-act-name'>Math</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
-                                        <div class='s-act-tab orange' data-hours='14.15-15.20'>
-                                            <div class='s-act-name'>Fitness</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class='s-act-row'></div>
-                                    <div class='s-act-row'>
-                                        <div class='s-act-tab blue' data-hours='7.10-7.55'>
-                                            <div class='s-act-name'>English</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>A. Rygulska</div>
-                                                <div class='s-act-room'>105</div>
-                                                <div class='s-act-group'>G1</div>
-                                            </div>
-                                        </div>
-                                        <div class='s-act-tab red' data-hours='8.23-9.35'>
-                                            <div class='s-act-name'>Deutsch</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
-                                        <div class='s-act-tab pink' data-hours='15.05-16.10'>
-                                            <div class='s-act-name'>Bio</div>
-                                            <div class='s-wrapper'>
-                                                <div class='s-act-teacher'>D. Kozlowicz</div>
-                                                <div class='s-act-room'>121</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class='s-act-row'></div>
+                                </td>
+                                <td>
+                                  <div class="class-details">
+                                    <p class="ccode">{{$item->course_code}}</p>
+                                    <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                    <p class="tname">John Doe</p>
+                                    <p class="rno">Room: {{$item->schedule_room}}</p>
+                                  </div>
+                              </td>
+                              <td>
+                                <div class="class-details">
+                                  <p class="ccode">{{$item->course_code}}</p>
+                                  <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                  <p class="tname">John Doe</p>
+                                  <p class="rno">Room: {{$item->schedule_room}}</p>
                                 </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                                <div class='s-row s-hour-row'>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                    <div class='s-hour-wrapper s-cell'>
-                                        <div class='s-half-hour'></div>
-                                        <div class='s-half-hour'></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </td>
+                            <td>
+                              <div class="class-details">
+                                <p class="ccode">{{$item->course_code}}</p>
+                                <p class="ctime">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</p>
+                                <p class="tname">John Doe</p>
+                                <p class="rno">Room: {{$item->schedule_room}}</p>
+                              </div>
+                          </td>
+                                    </tr>
+                                  @endif
+                                @endforeach
 
-            </div>
 
-            {{-- //copy from here --}}
-        </div>
-        <!-- end page content -->
 
-    </div>
-    <!-- end page container -->
 
-    <!-- start footer -->
-    @include('backend.back_layouts.footer')
-    <!-- end footer -->
 
-</div>
 
-@endsection
+
+
+
+
+
+
+
+                                ---------------------------------------
+
+                                
+                              <thead>
+                                <th>Day/Time</th>
+                                @foreach ($schedules as $item => $details)
+                                  @foreach ($details as $scheduleDetails)
+                                    @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                    <th class="text-center text-sm th-time">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</th>
+                                        
+                                    @endif
+                                    @endforeach
+                                @endforeach
+                              </thead>
+                              <tbody>
+                                {{-- <p>{{$schedules}}</p> --}}
+                                @foreach ($schedules as $item => $details)
+                                  <tr>
+                                    <td class="text-center text-uppercase"><strong>{{ $item }}<strong></td>
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                          <td>
+                                                <div class="class-details">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  <p class="tname">John Doe</p>
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                  <p>{{$scheduleDetails->schedule_day}}</p>
+                                                </div>
+                                          </td>
+                                              
+                                          @endif
+                                          @endforeach
+                                        
+                                  </tr>
+                                @endforeach
+                              </tbody>
+
+
+
+
+
+
+
+
+
+
+                              ------------------------------------
+                              <?php
+
+namespace App\Http\Livewire;
+use Livewire\Component;
+use App\Models\Year;
+use App\Models\Semester;
+use App\Models\CourseCode;
+use App\Models\CourseTitle;
+use App\Models\Course;
+use Illuminate\Support\Facades\DB;
+
+class Dropdown extends Component
+{
+    public $year;
+    public $semester;
+    public $coursecode;
+    public $coursetitle;
+    public $courseteacher;
+    public $selectedYear = null;
+    public $selectedSemester = null;
+    public $selectedCode = null;
+    public $selectedTeacher = null;
+
+    public function mount(){
+        
+        $this->year = Year::all();
+        $this->semester = collect();
+        $this->coursecode = collect();
+        $this->coursetitle = collect();
+        $this->courseteacher = collect();
+    }
+    
+    public function render()
+    {
+        // $this->year = DB::table('schedules_year')->get();
+        return view('livewire.dropdown');
+    }
+
+    public function updatedSelectedYear($year_id){
+        $this->semester = Semester::where('course_year_id', $year_id)->get();
+    }
+    public function updatedSelectedSemester($course_semester_id){
+        // $findYearSemester = ['course_year_id' => $year_id, 'course_semester_id' => $course_semester_id];
+        $this->coursecode = CourseCode::where('course_semester_id', $course_semester_id)->get();
+    }
+    public function updatedSelectedCode($course_code){
+        $this->coursetitle = CourseTitle::select('course_title')->where('course_code', $course_code)->get();
+    }
+    public function updatedSelectedTitle($course_title){
+        $this->courseteacher = Course::select('course_teacher')->where('course_code', $course_title)->get();
+    }
+}

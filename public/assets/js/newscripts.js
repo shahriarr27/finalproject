@@ -47,37 +47,29 @@
 //   });
 
 // });
+var today = new Date();
+var minDate = today.setDate(today.getDate() + 1);
 
+$('#datePicker').datetimepicker({
+  useCurrent: false,
+  format: "MM/DD/YYYY",
+  minDate: minDate
+});
 
-$.ajaxSetup({
-  headers: {
-  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+var firstOpen = true;
+var time;
+
+$('.timePicker').datetimepicker({
+  useCurrent: false,
+  format: "hh:mm A"
+}).on('dp.show', function() {
+  if(firstOpen) {
+    time = moment().startOf('day');
+    firstOpen = false;
+  } else {
+    time = "01:00 PM"
   }
-  });
+  
+  $(this).data('DateTimePicker').date(time);
+});
 
-  $('.dynamic').on('change', function(e) {
-
-      var select = $(this).attr('id');
-      var value = $(this).val();
-      var dependent = $(this).data('dependent');
-      var _token = $('input[name="_token"]').val();
-
-      $.ajax({
-        url:"{{route(dropdown/fetch)}}",
-        method: "POST",
-        data:{select:select, value:value, _token:_token, dependent:dependent},
-        success:function(result){
-          $('#'+dependent).html(result);
-        }
-      })
-
-    // let course_year=jQuery(this).val();
-    // jQuery.ajax({
-    //   url:'/schedule/getsemester',
-    //   type:'post',
-    //   data:'course_year='+course_year,
-    //   success:function(result){
-    //     $('#semester').innerHTML('hey')
-    //   }
-    // });
-  });

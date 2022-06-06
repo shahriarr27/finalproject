@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RouteController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeacherController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Livewire\Dropdown;
 use App\Models\User;
 
 /*
@@ -43,6 +45,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('staffs', StaffController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('schedule', ScheduleController::class);
+    Route::get('1-1schedule', [RouteController::class, 'schedule1_1'])->name('1-1schedule');
  });
 
- Route::post('dropdown/fetch', [DropdownController::class, 'fetch']);
+Route::get('livewire/dropdown', [Dropdown::class, 'render']);
+//  Route::post('dropdown/fetch', [DropdownController::class, 'fetch']);

@@ -83,179 +83,303 @@
                           </div>
                           <table class="table table-bordered table-hover bg-light mt-4 class-schedule-table">
                               <thead>
-                                  <th class="w-25 text-center">A</th>
-                                  <th class="text-center">B</th>
-                                  <th class="text-center">C</th>
-                                  <th class="text-center">D</th>
-                                  <th class="text-center">E</th>
+                                <th>Day</th>
                               </thead>
                               <tbody>
-                                  <tr class="text-center">
-                                      <td>Saturday</td>
-                                      <td>
-                                        <div class="class-details">
-                                            <p class="ccode">Bangla</p>
-                                            <p class="ctime">10:00-11:00</p>
-                                            <p class="tname">John Doe</p>
-                                            <p class="rno">401</p>
-                                        </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
-                                  <tr class="text-center">
-                                      <td>Sunday</td>
-                                      <td>
-                                          <div class="class-details">
-                                              <p class="ccode">Bangla</p>
-                                              <p class="ctime">10:00-11:00</p>
-                                              <p class="tname">John Doe</p>
-                                              <p class="rno">401</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
-                                  <tr class="text-center">
-                                      <td>Monday</td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Bangla</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
-                                  <tr class="text-center">
-                                      <td>Tuesday</td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Bangla</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
-                                  <tr class="text-center">
-                                      <td>Wednesday</td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Bangla</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
-                                  <tr class="text-center">
-                                      <td>Thursday</td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Bangla</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>English</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Math</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <div class="class-details">
-                                              <h4>Physics</h4>
-                                              <p>10:00-11:00</p>
-                                          </div>
-                                      </td>
-                                  </tr>
+                                {{-- <p>{{$schedules}}</p> --}}
+                                <tr>
+                                  <td class="text-center text-uppercase text-danger" style="width:  20%"><strong>SUN<strong></td>
+                                    @foreach ($schedules as $item => $details)
+                                    @if ($item == 'sun')
+                                      {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-primary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+
+                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-success">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-secondary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-danger">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-warning">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-info">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-dark">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                          
+                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-success">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @endif
+
+                                        @endforeach
+                                    @endif
+                                  @endforeach
+                                </tr>
+                                <tr>
+                                  <td class="text-center text-uppercase text-danger"><strong>MON<strong></td>
+                                    @foreach ($schedules as $item => $details)
+                                    @if ($item == 'mon')
+                                      {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-primary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  <p class="tname">John Doe</p>
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @else
+                                            <td class="class-details-td">
+                                              <div class="class-details border border-primary">
+                                                <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                <p class="tname">John Doe</p>
+                                                <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                              </div>
+                                            </td>
+                                          @endif
+                                        @endforeach
+                                    @endif
+                                  @endforeach
+                                </tr>
+                                <tr>
+                                  <td class="text-center text-uppercase text-danger"><strong>TUE<strong></td>
+                                    @foreach ($schedules as $item => $details)
+                                    @if ($item == 'tue')
+                                      {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-primary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  <p class="tname">John Doe</p>
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @else
+                                            <td class="class-details-td">
+                                              <div class="class-details border border-primary">
+                                                <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                <p class="tname">John Doe</p>
+                                                <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                              </div>
+                                            </td>
+                                          @endif
+                                        @endforeach
+                                    @endif
+                                  @endforeach
+                                </tr>
+                                <tr>
+                                  <td class="text-center text-uppercase text-danger"><strong>WED<strong></td>
+                                    @foreach ($schedules as $item => $details)
+                                    @if ($item == 'wed')
+                                      {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-primary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  <p class="tname">John Doe</p>
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @else
+                                            <td class="class-details-td">
+                                              <div class="class-details border border-primary">
+                                                <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                <p class="tname">John Doe</p>
+                                                <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                              </div>
+                                            </td>
+                                          @endif
+                                        @endforeach
+                                    @endif
+                                  @endforeach
+                                </tr>
+                                <tr>
+                                  <td class="text-center text-uppercase text-danger"><strong>THR<strong></td>
+                                    @foreach ($schedules as $item => $details)
+                                    @if ($item == 'thr')
+                                      {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
+                                        @foreach ($details as $scheduleDetails)
+                                          @if ($scheduleDetails->course_year == 1 && $scheduleDetails->course_semester == 1)
+                                          <td class="class-details-td">
+                                                <div class="class-details border border-primary">
+                                                  <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime text-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                  <p class="tname">John Doe</p>
+                                                  <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                                </div>
+                                          </td>
+                                          @else
+                                            <td class="class-details-td">
+                                              <div class="class-details border border-primary">
+                                                <p class="ccode">{{$scheduleDetails->course_code}}</p>
+                                                <p class="ctime  fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                <p class="tname">John Doe</p>
+                                                <p class="rno">Room: {{$scheduleDetails->schedule_room}}</p>
+                                              </div>
+                                            </td>
+                                          @endif
+                                        @endforeach
+                                    @endif
+                                  @endforeach
+                                </tr>
                               </tbody>
                           </table>
 

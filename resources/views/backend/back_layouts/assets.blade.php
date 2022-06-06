@@ -21,8 +21,11 @@
 	<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')}}" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!--bootstrap -->
 	<link href="{{asset('../assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+	{{-- <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" /> --}}
 	<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css')}}"/>
 	<link href="{{asset('../assets/plugins/summernote/summernote.css')}}" rel="stylesheet">
+	<link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet"
+			media="screen">
 	<!-- data tables -->
 	<link href="{{asset('../assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet"
 		type="text/css" />
@@ -39,6 +42,8 @@
 	<link href='{{asset('../assets/css/pages/fullcalendar.css')}}' rel='stylesheet' />
 	<!-- Date Time item CSS -->
 	<link rel="stylesheet" href="{{asset('../assets/plugins/flatpicker/css/flatpickr.min.css')}}" />
+
+	<link rel="stylesheet" href="{{asset('../assets/css/tpicker.css')}}" />
 	<!-- Theme Styles -->
 	<link href="{{asset('../assets/css/pages/extra_pages.css')}}" rel="stylesheet">
 	<link href="{{asset('../assets/css/theme/light/theme_style.css')}}" rel="stylesheet" id="rt_style_components" type="text/css" />
@@ -77,8 +82,12 @@
 	<script src="{{asset('../assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 	<script src="{{asset('../assets/plugins/sparkline/jquery.sparkline.js')}}"></script>
 	<script src="{{asset('../assets/js/pages/sparkline/sparkline-data.js')}}"></script>
-	<script src="{{asset('../assets/plugins/moment/moment.min.js')}}"></script>
+	<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js')}}"></script>
 	<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
+	{{-- <script src="{{asset('../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker-init.js')}}" charset="UTF-8">
+	</script> --}}
+	<script src="{{asset('../assets/js/tpicker.js')}}"></script>
 
 	<script src="{{asset('../assets/plugins/flatpicker/js/flatpicker.min.js')}}"></script>
 	<!-- calendar -->

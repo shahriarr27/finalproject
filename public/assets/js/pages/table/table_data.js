@@ -62,6 +62,15 @@ $(document).ready(function () {
     dataTable.column(3).search(status).draw();
   })
 
+  $('#year-filter').on('change', function(e){
+    var status = $(this).val();
+    $('#year-filter').val(status)
+    console.log(status)
+    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+    dataTable.column(3).search(status).draw();
+  })
+
+
 
   $("#saveStage").DataTable({
     stateSave: true,
