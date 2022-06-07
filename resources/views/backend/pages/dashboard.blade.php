@@ -100,7 +100,7 @@
 					</div>
 					<!-- end widget -->
 
-					<div class="row">
+					{{-- <div class="row">
 						<div class="col-md-9 col-sm-12">
 							<div class="card">
 								<div class="card-head">
@@ -138,7 +138,7 @@
 							</div>
 
 						</div>
-					</div>
+					</div> --}}
 
 					<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">

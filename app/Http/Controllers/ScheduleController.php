@@ -57,8 +57,8 @@ class ScheduleController extends Controller
             'course_code' => 'required',
             'course_title' => 'required',
             'schedule_day' => 'required',
-            // 'startTime' => 'required',
-            // 'endTime' => 'required',
+            'startTime' => 'required',
+            'endTime' => 'required',
             'schedule_room' => 'required',
         ]);
 
@@ -69,6 +69,13 @@ class ScheduleController extends Controller
         $sc_year = $request->input('course_year');
         $sc_semester = $request->input('course_semester');
 
+        $start = Schedule::where('schedule_day', $dayId)
+                        ->where('startTime', $startTime)->get();
+
+        $end = Schedule::where('schedule_day', $dayId)
+                        ->where('endTime', $endTime)->get();
+
+        // dd($start);
 
         $getysem=DB::table('schedules2')->select('*')->get();
 
@@ -95,6 +102,12 @@ class ScheduleController extends Controller
             }
             elseif($timeExists && $batchExists && $dayExists){
                 return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
+            }
+            elseif($batchExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
+            }
+            elseif($roomExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
             }
         }
 
@@ -131,9 +144,10 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function edit(Schedule $schedule)
+    public function edit($id)
     {
-        //
+        $editSchedule = Schedule::find($id);
+        return view('backend.pages.schedule.edit-schedule')->with('editSchedule', $editSchedule);
     }
 
     /**
@@ -143,9 +157,84 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, $id)
     {
-        //
+        $edit_schedule = Schedule::find($id);
+
+        $request->validate([
+            'course_year' => 'required',
+            'course_semester' => 'required',
+            'course_code' => 'required',
+            'course_title' => 'required',
+            'schedule_day' => 'required',
+            'startTime' => 'required',
+            'endTime' => 'required',
+            'schedule_room' => 'required',
+        ]);
+
+        $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')));
+        $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
+        $dayId = $request->input('schedule_day');
+        $sc_room = $request->input('schedule_room');
+        $sc_year = $request->input('course_year');
+        $sc_semester = $request->input('course_semester');
+
+        $start = Schedule::where('schedule_day', $dayId)
+                        ->where('startTime', $startTime)->get();
+
+        $end = Schedule::where('schedule_day', $dayId)
+                        ->where('endTime', $endTime)->get();
+
+        // dd($start);
+
+        $getysem=DB::table('schedules2')->select('*')->get();
+
+        $timeExists = Schedule::where('schedule_day', $dayId)
+                        ->where('startTime', $startTime)
+                        ->where('endTime', $endTime)
+                        ->exists();
+        $dayExists = Schedule::where('schedule_day', $dayId)
+                        ->exists();
+        $roomExists = Schedule::where('schedule_day', $dayId)
+                        ->where('schedule_room', $sc_room)
+                        ->exists();
+        $batchExists = Schedule::where('schedule_day', $dayId)
+                        ->where('course_year', $sc_year)
+                        ->where('course_semester', $sc_semester)
+                        ->exists();
+        foreach($getysem as $ys){
+
+            if(($ys->course_year == $sc_year && $ys->course_year == $sc_semester && $timeExists)){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Time is already taken!');
+            }
+            elseif($timeExists && $dayExists && $roomExists){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is already taken!');
+            }
+            elseif($timeExists && $batchExists && $dayExists){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
+            }
+            elseif($batchExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
+            }
+            elseif($roomExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
+            }
+        }
+
+        $edit_schedule->course_year = $request->input('course_year');
+        $edit_schedule->course_semester = $request->input('course_semester');
+        $edit_schedule->course_code = $request->input('course_code');
+        $edit_schedule->course_title = $request->input('course_title');
+        $edit_schedule->schedule_day = $request->input('schedule_day');
+        $edit_schedule->startTime = $request->input('startTime');
+        $edit_schedule->endTime = $request->input('endTime');
+        $edit_schedule->schedule_room = $request->input('schedule_room');
+
+
+        $edit_schedule->update();
+
+        return redirect()->action([ScheduleController::class, 'index'])->with('success', 'Schedule Updated Successfully!');
+
     }
 
     /**
@@ -154,9 +243,12 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy($id)
     {
-        //
+        $delete_schedule = Schedule::find($id);
+        $delete_schedule->delete();
+
+        return redirect()->action([ScheduleController::class, 'index'])->with('success', 'Schedule deleted successfully!');
     }
 
     public function getyear(){

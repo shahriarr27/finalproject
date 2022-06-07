@@ -29,24 +29,23 @@
               </a>
            </li>
            <li class="nav-item">
-              <a href="event.html" class="nav-link nav-toggle"> <i class="material-icons">event</i>
-                 <span class="title">Event Management</span>
-              </a>
-           </li>
-           <li class="nav-item">
               <a href="#" class="nav-link nav-toggle"><i class="material-icons">event</i>
                  <span class="title">Class Schedules</span><span class="arrow"></span></a>
               <ul class="sub-menu">
-                 <li class="nav-item">
-                    <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
-                    </a>
-                 </li>
                  <li class="nav-item">
                     <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
                     </a>
                  </li>
                  <li class="nav-item">
                     <a href="{{route('1-1schedule')}}" class="nav-link "> <span class="title">1st Year 1st Semester</span>
+                    </a>
+                 </li>
+                 <li class="nav-item">
+                    <a href="{{route('1-2schedule')}}" class="nav-link "> <span class="title">1st Year 2nd Semester</span>
+                    </a>
+                 </li>
+                 <li class="nav-item">
+                    <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
                     </a>
                  </li>
               </ul>

@@ -25,6 +25,15 @@
                {{-- Breadcrumb start --}}
 					@include('backend.back_layouts.breadcrumb')
                <!-- end Breadcrumb menu -->
+               
+            @if(session()->has('success'))
+              <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+                  <p>{{ session()->get('success') }}</p>
+                  <a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </a>
+              </div>
+            @endif
             {{-- @include('inc.messages') --}}
                @if (count($staffs)>0)
                <div class="row">
@@ -128,14 +137,35 @@
                                           {{$staff->email}} </a></td>
                                           @if (Auth::user()->admin_role == 'super_admin')
                                           <td>
-                                          <a href="users/{{$staff->id}}/edit"
-                                            class="btn btn-primary btn-xs">
-                                            <i class="fa fa-pencil"></i>
-                                          </a>
-                                          <button class="btn btn-danger btn-xs">
-                                            <i class="fa fa-trash-o "></i>
-                                          </button>
-                                        </td>
+                                            <a href="users/{{$staff->id}}/edit"
+                                              class="btn btn-primary btn-xs">
+                                              <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <button data-toggle="modal" data-target="#staffModal{{$staff->id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                          </td>
+                                          <div class="modal fade" id="staffModal{{$staff->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">x</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <p>Are you sure to delete?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <form method="POST" action="{{ route('staffs.destroy', [$staff->id]) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                      <button class="btn btn-danger" type="submit">Delete</button>
+                                                  </form>
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         @endif
                                       </tr>
                                           
@@ -185,7 +215,7 @@
               </div>
                    
                @else
-               <p>No teacher found!</p>
+               <p>No staffs found!</p>
 					
                @endif
 

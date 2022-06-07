@@ -46,7 +46,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('courses', CourseController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::get('1-1schedule', [RouteController::class, 'schedule1_1'])->name('1-1schedule');
+    Route::get('1-2schedule', [RouteController::class, 'schedule1_2'])->name('1-2schedule');
  });
 
 Route::get('livewire/dropdown', [Dropdown::class, 'render']);
+Route::get('livewire/edit-dropdown', [Dropdown::class, 'edit']);
 //  Route::post('dropdown/fetch', [DropdownController::class, 'fetch']);

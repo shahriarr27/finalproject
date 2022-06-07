@@ -1,4 +1,5 @@
-<form action="{{ url('schedule') }}" enctype="multipart/form-data" method="POST">
+<form action="{{ url('schedule/'.$editSchedule->id) }}" enctype="multipart/form-data" method="POST">
+    @method('PUT')
     @csrf
     <div class="card-body row">
         <div class="col-lg-6 p-t-20">
@@ -29,7 +30,7 @@
                 <div class="text-danger text-sm">{{ $message }}</div>
             @enderror
         </div>
-
+  
         <div class="col-lg-6 p-t-20">
             <label for="course_code" class="text-muted text-sm mb-0">Select Course Code</label>
             <select name="course_code" class="form-control" id="course_code" data-dependent="course_code"
@@ -45,24 +46,25 @@
                 <div class="text-danger text-sm">{{ $message }}</div>
             @enderror
         </div>
-
+  
+        {{-- <p>{{$courseTitle}}</p> --}}
     @if (!is_null($selectedCode))
-        @foreach ($coursetitle as $item)
         <div class="col-lg-6 p-t-20">
+            @foreach ($courseTitle as $item)
                 <label for="course_title" class="text-muted text-sm mb-0">Course Title</label>
                 <input class="form-control" type="text" id="course_title" name="course_title" value="{{$item->course_title}}" readonly style="background: white" >
+                @endforeach
         </div>
-        @endforeach
     @else
         <div class="col-lg-6 p-t-20">
             <label for="course_title" class="text-muted text-sm mb-0">Course Title</label>
-            <input class="form-control" type="text" id="course_title" name="course_title" value="course title" readonly style="background: white" >
+            <input class="form-control" type="text" id="course_title" name="course_title" value="{{$selectedTitle}}" readonly style="background: white" >
             @error('course_title')
                 <div class="text-danger text-sm">{{ $message }}</div>
             @enderror
         </div>
     @endif
-
+  
     <div class="col-lg-6 p-t-20">
         <label for="schedule_day" class="text-muted text-sm mb-0">Select Day</label>
         <select name="schedule_day" class="form-control" id="schedule_day">
@@ -92,20 +94,6 @@
             <div class="text-danger text-sm">{{ $message }}</div>
         @enderror
     </div>
-      {{-- <div class="col-lg-6 p-t-20">
-        <label for="startTime" class="text-muted text-sm mb-0">Starting Time</label>
-        <div class="input-group date timePicker" id="timePicker">
-          <input type="text" class="form-control timePicker" id="startTime">
-          <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-        </div>
-      </div>
-      <div class="col-lg-6 p-t-20">
-        <label for="endTime" class="text-muted text-sm mb-0">Ending Time</label>
-        <div class="input-group date timePicker" id="timePicker2">
-          <input type="text" class="form-control timePicker" id="endTime">
-          <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-        </div>
-      </div> --}}
     
       <div class="col-lg-6 p-t-20">
         <label for="schedule_room" class="text-muted text-sm mb-0">Select Room</label>
@@ -124,9 +112,33 @@
     </div>
     <div class="col-lg-12 p-t-50 text-center">
         <button type="submit"
-            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-success">Add
-            Schedule</button>
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-success">Update Schedule</button>
+        <a data-toggle="modal" data-target="#scheduleModal{{$editSchedule->id}}" class="btn btn-danger mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20">Delete Schedule</a>
     </div>
     </div>
     {{ csrf_field() }}
-</form>
+  </form>
+  
+  <div class="modal fade" id="scheduleModal{{$editSchedule->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete?</p>
+        </div>
+        <div class="modal-footer">
+          <form method="POST" action="{{ route('schedule.destroy', [$editSchedule->id]) }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+              <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+          <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>

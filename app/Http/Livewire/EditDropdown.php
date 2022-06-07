@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire;
+
 use Livewire\Component;
 use App\Models\Year;
 use App\Models\Semester;
@@ -10,12 +11,14 @@ use App\Models\Course;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 
-class Dropdown extends Component
+class EditDropdown extends Component
 {
+    public $editSchedule;
+
     public $year;
     public $semester;
     public $coursecode;
-    public $coursetitle;
+    public $courseTitle;
     public $courseteacher;
     public $selectedYear = null;
     public $selectedSemester = null;
@@ -29,7 +32,7 @@ class Dropdown extends Component
         $this->year = Course::orderBy('course_year', 'asc')->get()->unique('course_year');
         $this->semester = collect();
         $this->coursecode = collect();
-        $this->coursetitle = collect();
+        $this->courseTitle = collect();
         $this->courseteacher = collect();
 
         $this->selectedCode = $selectedCode;
@@ -40,18 +43,18 @@ class Dropdown extends Component
             if($ccode){
                 $this->coursecode = Course::where('course_semester', $ccode->course_semester)->orderBy('course_code', 'asc')->get();
                 $this->semester = Course::where('course_year', $ccode->course_year)->orderBy('course_code', 'asc')->get()->unique('course_semester');
+                $this->courseTitle = Course::select('course_title')->where('course_code', $ccode->course_code)->get();
                 $this->selectedCode = $ccode->course_code;
                 $this->selectedSemester = $ccode->course_semester;
                 $this->selectedYear = $ccode->course_year;
-                $this->selectedTitle = $ccode->course_title;
+                $this->selectedtitle2 = $ccode->course_title;
             }
         }
     }
     
     public function render()
     {
-        // $this->year = DB::table('schedules_year')->get();
-        return view('livewire.dropdown');
+        return view('livewire.edit-dropdown');
     }
 
     public function updatedSelectedYear($year_id){
@@ -62,10 +65,10 @@ class Dropdown extends Component
         // $findYearSemester = ['course_year_id' => $year_id, 'course_semester_id' => $course_semester_id];
         $this->coursecode = Course::where('course_semester', $course_semester_id)->orderBy('course_code', 'asc')->get();
     }
-    public function updatedSelectedCode($course_code){
-        $this->coursetitle = Course::select('course_title')->where('course_code', $course_code)->get();
+    public function updatedSelectedCode($coursecode){
+        $this->courseTitle = Course::select('course_title')->where('course_code', $coursecode)->get();
     }
     public function updatedSelectedTitle($course_title){
-        $this->courseteacher = Course::select('course_teacher')->where('course_code', $course_title)->get();
+        $this->courseteacher = Course::select('course_title')->where('course_code', $course_title)->get();
     }
 }

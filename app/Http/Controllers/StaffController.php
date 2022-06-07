@@ -83,6 +83,9 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_staff = User::find($id);
+        $delete_staff->delete();
+
+        return redirect()->action([StaffController::class, 'index'])->with('success', 'Deleted successfully!');
     }
 }

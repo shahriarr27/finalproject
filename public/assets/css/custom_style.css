@@ -483,4 +483,22 @@
 }
 
 
+.table-scroll{
+  max-width: 100%;
+  overflow-x: scroll;
+}
 
+.class-details-td{
+  min-width: 250px;
+}
+
+.class-details{
+  transition: .5s;
+
+}
+
+.class-details-td a:hover>.class-details{
+  transform: scale(1.05);
+  transition: .3s;
+  background: white;
+}
