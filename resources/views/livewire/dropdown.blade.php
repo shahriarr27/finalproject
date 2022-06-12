@@ -110,12 +110,14 @@
       <div class="col-lg-6 p-t-20">
         <label for="schedule_room" class="text-muted text-sm mb-0">Select Room</label>
         <select name="schedule_room" class="form-control" id="schedule_room">
-            <option value="" selected>Available Rooms</option>
+            <option value="" selected>Select Room</option>
             <option value="401" >401</option>
             <option value="402" >402</option>
             <option value="411" >411</option>
-            <option value="l01" >Lab 01</option>
-            <option value="l02">Lab 02</option>
+            <option value="413" >413</option>
+            <option value="414" >414</option>
+            <option value="Lab-01" >Lab 01</option>
+            <option value="Lab-02">Lab 02</option>
         </select>
         {{-- <p>{{$selectedSemester}}</p> --}}
         @error('schedule_room')

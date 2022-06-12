@@ -69,11 +69,11 @@
         <label for="schedule_day" class="text-muted text-sm mb-0">Select Day</label>
         <select name="schedule_day" class="form-control" id="schedule_day">
             <option value="" selected>Select Day</option>
-            <option value="sun">Sunday</option>
-            <option value="mon">Monday</option>
-            <option value="tue">Tuesday</option>
-            <option value="wed">Wednesday</option>
-            <option value="thr">Thursday</option>
+            <option value="sun" {{ old('schedule_day', $editSchedule->schedule_day) == 'sun' ? 'selected' : '' }}>Sunday</option>
+            <option value="mon" {{ old('schedule_day', $editSchedule->schedule_day) == 'mon' ? 'selected' : '' }}>Monday</option>
+            <option value="tue" {{ old('schedule_day', $editSchedule->schedule_day) == 'tue' ? 'selected' : '' }}>Tuesday</option>
+            <option value="wed" {{ old('schedule_day', $editSchedule->schedule_day) == 'wed' ? 'selected' : '' }}>Wednesday</option>
+            <option value="thr" {{ old('schedule_day', $editSchedule->schedule_day) == 'thr' ? 'selected' : '' }}>Thursday</option>
         </select>
         {{-- <p>{{$selectedSemester}}</p> --}}
         @error('schedule_day')
@@ -82,14 +82,14 @@
     </div>
     <div class="col-lg-6 p-t-20">
       <label for="startTime" class="text-muted text-sm mb-0">Starting Time</label>
-        <input type="time" class="form-control" id="starTime" name="startTime">
+        <input type="time" class="form-control" id="starTime" name="startTime" value="{{old('startTime', $editSchedule->startTime)}}">
         @error('startTime')
             <div class="text-danger text-sm">{{ $message }}</div>
         @enderror
     </div>
     <div class="col-lg-6 p-t-20">
       <label for="endTime" class="text-muted text-sm mb-0">Ending Time</label>
-        <input type="time" class="form-control" id="endTime" name="endTime">
+        <input type="time" class="form-control" id="endTime" name="endTime" value="{{old('endTime', $editSchedule->endTime)}}">
         @error('endTime')
             <div class="text-danger text-sm">{{ $message }}</div>
         @enderror
@@ -98,12 +98,15 @@
       <div class="col-lg-6 p-t-20">
         <label for="schedule_room" class="text-muted text-sm mb-0">Select Room</label>
         <select name="schedule_room" class="form-control" id="schedule_room">
-            <option value="" selected>Available Rooms</option>
-            <option value="401" >401</option>
-            <option value="402" >402</option>
-            <option value="411" >411</option>
-            <option value="l01" >Lab 01</option>
-            <option value="l02">Lab 02</option>
+            <option value="" selected>Select Room</option>
+            <option value="401" {{ old('schedule_room', $editSchedule->schedule_room) == '401' ? 'selected' : '' }}>401</option>
+            <option value="402" {{ old('schedule_room', $editSchedule->schedule_room) == '402' ? 'selected' : '' }}>402</option>
+            <option value="411" {{ old('schedule_room', $editSchedule->schedule_room) == '411' ? 'selected' : '' }}>411</option>
+            <option value="411" {{ old('schedule_room', $editSchedule->schedule_room) == '412' ? 'selected' : '' }}>412</option>
+            <option value="411" {{ old('schedule_room', $editSchedule->schedule_room) == '413' ? 'selected' : '' }}>413</option>
+            <option value="411" {{ old('schedule_room', $editSchedule->schedule_room) == '414' ? 'selected' : '' }}>414</option>
+            <option value="l01" {{ old('schedule_room', $editSchedule->schedule_room) == 'Lab-01' ? 'selected' : '' }}>Lab 01</option>
+            <option value="l02" {{ old('schedule_room', $editSchedule->schedule_room) == 'Lab-02' ? 'selected' : '' }}>Lab 02</option>
         </select>
         {{-- <p>{{$selectedSemester}}</p> --}}
         @error('schedule_room')

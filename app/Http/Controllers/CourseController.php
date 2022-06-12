@@ -19,7 +19,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $course =  Course::orderBy('id', 'desc')
+        $course =  Course::orderBy('course_code', 'asc')
         ->get();
         return view('backend.pages.courses.show-courses')->with('course', $course);
     }
@@ -44,7 +44,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'course_code' => 'required',
+            'course_code' => 'required|unique:course',
             'course_title' => 'required',
             'course_year' => 'required',
             'course_semester' => 'required',
@@ -115,7 +115,7 @@ class CourseController extends Controller
     {
         $edit_course = Course::find($id);
         $request->validate([
-            'course_code' => 'required',
+            'course_code' => 'required|unique:course,course_code,'.$edit_course->id,
             'course_title' => 'required',
             'course_year' => 'required',
             'course_semester' => 'required',

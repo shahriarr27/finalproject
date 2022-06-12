@@ -373,8 +373,8 @@
 																	<a href="javascript:void(0)" class="text-inverse" title="Delete"
 																		data-bs-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
 																	
-															@endif
 														</tr>
+															@endif
 													@endforeach
 												</tbody>
 											</table>

@@ -51,6 +51,7 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'course_year' => 'required',
             'course_semester' => 'required',
@@ -62,68 +63,147 @@ class ScheduleController extends Controller
             'schedule_room' => 'required',
         ]);
 
-        $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')));
-        $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
+        $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')))->addMinute(1);
+        // $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
+        // $startTime = $request->input('startTime');
+        $endTime = $request->input('endTime');
         $dayId = $request->input('schedule_day');
         $sc_room = $request->input('schedule_room');
         $sc_year = $request->input('course_year');
         $sc_semester = $request->input('course_semester');
 
-        $start = Schedule::where('schedule_day', $dayId)
-                        ->where('startTime', $startTime)->get();
+        // $startRoom = Schedule::where('schedule_day', $dayId)
+        //         ->where('schedule_room', $sc_room)
+        //         ->whereTime('startTime', '>', $startTime)
+        //         ->whereTime('startTime', '<', $endTime)
+        //         ->exists();
 
-        $end = Schedule::where('schedule_day', $dayId)
-                        ->where('endTime', $endTime)->get();
+        // $startBacth = Schedule::where('schedule_day', $dayId)
+        //         ->where('course_year', $sc_year)
+        //         ->where('course_semester', $sc_semester)
+        //         ->whereTime('startTime', '>', $startTime)
+        //         ->whereTime('startTime', '<', $endTime)
+        //         ->exists();
 
-        // dd($start);
 
-        $getysem=DB::table('schedules2')->select('*')->get();
-
-        $timeExists = Schedule::where('schedule_day', $dayId)
-                        ->where('startTime', $startTime)
-                        ->where('endTime', $endTime)
+        $roomExistsBtwnST = Schedule::where('schedule_day', $dayId)
+                        ->where('schedule_room', $sc_room)
+                        ->where('startTime', '<', $startTime)
+                        ->where('startTime', '>', $endTime)
                         ->exists();
-        $dayExists = Schedule::where('schedule_day', $dayId)
-                        ->exists();
+
         $roomExists = Schedule::where('schedule_day', $dayId)
                         ->where('schedule_room', $sc_room)
+                        ->get();
+        $roomExistsBtwn = Schedule::where('schedule_day', $dayId)
+                        ->where('schedule_room', $sc_room)
+                        ->where('endTime', '>', $startTime)
+                        ->where('endTime', '<', $endTime)
                         ->exists();
-        $batchExists = Schedule::where('schedule_day', $dayId)
+
+        $batchClassExists = Schedule::where('schedule_day', $dayId)
                         ->where('course_year', $sc_year)
                         ->where('course_semester', $sc_semester)
+                        ->get();
+        $batchClassExistsBtwn = Schedule::where('schedule_day', $dayId)
+                        ->where('course_year', $sc_year)
+                        ->where('course_semester', $sc_semester)
+                        ->where('endTime', '>', $startTime)
+                        ->where('endTime', '<', $endTime)
                         ->exists();
-        foreach($getysem as $ys){
+        // if($roomExists->count()>0){
+            foreach($roomExists as $singleRE){
+                if(($endTime > $singleRE->startTime && $endTime <= $singleRE->endTime) || ($startTime < $singleRE->startTime && $endTime > $singleRE->endTime)){
+                    return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
+                    // dd('room overlap');  
+                    // || ($startTime > $singleRE->startTime && $endTime > $singleRE->endTime)  $startTime >= $singleRE->startTime && $endTime <= $singleRE->endTime) || 
+                }
+                // else{
+                //     dd(' room ok');
 
-            if(($ys->course_year == $sc_year && $ys->course_year == $sc_semester && $timeExists)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Time is already taken!');
-            }
-            elseif($timeExists && $dayExists && $roomExists){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is already taken!');
-            }
-            elseif($timeExists && $batchExists && $dayExists){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
-            }
-            elseif($batchExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
-            }
-            elseif($roomExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
-            }
-        }
+                // }
+            };
+        // }
 
-        $schedule = Schedule::create([
-            'course_year' => $request->course_year,
-            'course_semester' => $request->course_semester,
-            'course_code' => $request->course_code,
-            'course_title' => $request->course_title,
-            'schedule_day' => $request->schedule_day,
-            'startTime' => $request->startTime,
-            'endTime' => $request->endTime,
-            'schedule_room' => $request->schedule_room,
-        ]);
-        $schedule->save();
+        // elseif($batchClassExists->count()>0){
+            foreach($batchClassExists as $singleBCE){
+                if(($endTime > $singleBCE->startTime && $endTime < $singleBCE->endTime) || ($startTime < $singleBCE->startTime && $endTime > $singleBCE->endTime)){
+                    return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule at this time!');
+                //  dd('overlap');
+                //    || ($startTime > $singleBCE->startTime && $endTime > $singleBCE->endTime)  ($startTime >= $singleBCE->startTime && $endTime <= $singleBCE->endTime) || 
+                }
+                // else{
+                //     dd($startTime);
 
-        return redirect()->action([ScheduleController::class, 'index'])->with('success', 'Schedule added successfully!');
+                // }
+            };
+
+            if($roomExistsBtwn){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated between these times!');
+            }
+
+            if($roomExistsBtwnST){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this start times!');
+            }
+            if($batchClassExistsBtwn){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule between these times!');
+            }
+        // }
+
+            $schedule = Schedule::create([
+                'course_year' => $request->course_year,
+                'course_semester' => $request->course_semester,
+                'course_code' => $request->course_code,
+                'course_title' => $request->course_title,
+                'schedule_day' => $request->schedule_day,
+                'startTime' => $request->startTime,
+                'endTime' => $request->endTime,
+                'schedule_room' => $request->schedule_room,
+            ]);
+            $schedule->save();
+    
+            return redirect()->action([ScheduleController::class, 'index'])->with('success', 'Schedule added successfully!');
+        
+        // $dayExists = Schedule::where('schedule_day', $dayId)
+        //                 ->exists();
+        // $roomExists = Schedule::where('schedule_day', $dayId)
+        //                 ->where('schedule_room', $sc_room)
+        //                 ->exists();
+        // $batchExists = Schedule::where('schedule_day', $dayId)
+        //                 ->where('course_year', $sc_year)
+        //                 ->where('course_semester', $sc_semester)
+        //                 ->exists();
+        
+        // foreach($getysem as $ys){
+
+            // $lastendTime = $ys->endTime;
+            // dd($ys);
+
+
+
+            // if(($roomExists)){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
+            // }
+            // elseif($batchClassExists){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch has another schedule at this time!');
+            // }
+
+
+
+            // elseif($timeExists && $batchExists && $dayExists){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
+            // }
+            // elseif($startBacth && $dayExists){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
+            // }
+            // elseif($startRoom && $roomExists && $dayExists){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
+            // }
+            // elseif($roomExists && $dayExists && $endTime->between($ys->startTime, $ys->endTime, true)){
+            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between this end times!');
+            // }
+        // }
+
 
     }
 
@@ -172,54 +252,93 @@ class ScheduleController extends Controller
             'schedule_room' => 'required',
         ]);
 
-        $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')));
-        $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
+        $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')))->addMinute(1);
+        // $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
+        // $startTime = $request->input('startTime');
+        $endTime = $request->input('endTime');
         $dayId = $request->input('schedule_day');
         $sc_room = $request->input('schedule_room');
         $sc_year = $request->input('course_year');
         $sc_semester = $request->input('course_semester');
 
-        $start = Schedule::where('schedule_day', $dayId)
-                        ->where('startTime', $startTime)->get();
+        // $startRoom = Schedule::where('schedule_day', $dayId)
+        //         ->where('schedule_room', $sc_room)
+        //         ->whereTime('startTime', '>', $startTime)
+        //         ->whereTime('startTime', '<', $endTime)
+        //         ->exists();
 
-        $end = Schedule::where('schedule_day', $dayId)
-                        ->where('endTime', $endTime)->get();
+        // $startBacth = Schedule::where('schedule_day', $dayId)
+        //         ->where('course_year', $sc_year)
+        //         ->where('course_semester', $sc_semester)
+        //         ->whereTime('startTime', '>', $startTime)
+        //         ->whereTime('startTime', '<', $endTime)
+        //         ->exists();
 
-        // dd($start);
 
-        $getysem=DB::table('schedules2')->select('*')->get();
-
-        $timeExists = Schedule::where('schedule_day', $dayId)
-                        ->where('startTime', $startTime)
-                        ->where('endTime', $endTime)
+        $roomExistsBtwnST = Schedule::where('schedule_day', $dayId)
+                        ->where('schedule_room', $sc_room)
+                        ->where('startTime', '<', $startTime)
+                        ->where('startTime', '>', $endTime)
                         ->exists();
-        $dayExists = Schedule::where('schedule_day', $dayId)
-                        ->exists();
+
         $roomExists = Schedule::where('schedule_day', $dayId)
                         ->where('schedule_room', $sc_room)
+                        ->get();
+        $roomExistsBtwn = Schedule::where('schedule_day', $dayId)
+                        ->where('schedule_room', $sc_room)
+                        ->where('endTime', '>', $startTime)
+                        ->where('endTime', '<', $endTime)
                         ->exists();
-        $batchExists = Schedule::where('schedule_day', $dayId)
+
+        $batchClassExists = Schedule::where('schedule_day', $dayId)
                         ->where('course_year', $sc_year)
                         ->where('course_semester', $sc_semester)
+                        ->get();
+        $batchClassExistsBtwn = Schedule::where('schedule_day', $dayId)
+                        ->where('course_year', $sc_year)
+                        ->where('course_semester', $sc_semester)
+                        ->where('endTime', '>', $startTime)
+                        ->where('endTime', '<', $endTime)
                         ->exists();
-        foreach($getysem as $ys){
+        // if($roomExists->count()>0){
+            foreach($roomExists as $singleRE){
+                if(($endTime > $singleRE->startTime && $endTime <= $singleRE->endTime) || ($startTime < $singleRE->startTime && $endTime > $singleRE->endTime)){
+                    return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
+                    // dd('room overlap');  
+                    // || ($startTime > $singleRE->startTime && $endTime > $singleRE->endTime)  $startTime >= $singleRE->startTime && $endTime <= $singleRE->endTime) || 
+                }
+                // else{
+                //     dd(' room ok');
 
-            if(($ys->course_year == $sc_year && $ys->course_year == $sc_semester && $timeExists)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Time is already taken!');
+                // }
+            };
+        // }
+
+        // elseif($batchClassExists->count()>0){
+            foreach($batchClassExists as $singleBCE){
+                if(($endTime > $singleBCE->startTime && $endTime < $singleBCE->endTime) || ($startTime < $singleBCE->startTime && $endTime > $singleBCE->endTime)){
+                    return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule at this time!');
+                //  dd('overlap');
+                //    || ($startTime > $singleBCE->startTime && $endTime > $singleBCE->endTime)  ($startTime >= $singleBCE->startTime && $endTime <= $singleBCE->endTime) || 
+                }
+                // else{
+                //     dd($startTime);
+
+                // }
+            };
+
+            if($roomExistsBtwn){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated between these times!');
             }
-            elseif($timeExists && $dayExists && $roomExists){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is already taken!');
+
+            if($roomExistsBtwnST){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this start times!');
             }
-            elseif($timeExists && $batchExists && $dayExists){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
+            if($batchClassExistsBtwn){
+                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule between these times!');
             }
-            elseif($batchExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
-            }
-            elseif($roomExists && $dayExists && $startTime->between($ys->startTime, $ys->endTime, true)){
-                return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
-            }
-        }
+        // }
+
 
         $edit_schedule->course_year = $request->input('course_year');
         $edit_schedule->course_semester = $request->input('course_semester');

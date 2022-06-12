@@ -23,7 +23,7 @@ class CreateSchedulesTable2 extends Migration
             $table->string('schedule_day');
             $table->time('startTime');
             $table->time('endTime');
-            $table->enum('schedule_room', ['401', '402', '411', '412', '413', 'l01', 'l02']);
+            $table->enum('schedule_room', ['401', '402', '411', '412', '413','414', 'Lab-01', 'Lab-02']);
             $table->rememberToken();
             $table->timestamps();
         });

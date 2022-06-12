@@ -502,3 +502,17 @@
   transition: .3s;
   background: white;
 }
+
+.blogThumb{
+  min-height: 400px;
+  position: relative;
+}
+.course-box{
+  padding: 0px 10px !important;
+}
+
+.course-btn{
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+}

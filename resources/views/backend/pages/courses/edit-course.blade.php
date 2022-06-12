@@ -53,26 +53,6 @@
                         <div class="card-body row">
                           <div class="col-lg-6 p-t-20">
                             <div
-                              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                              <input class="mdl-textfield__input" type="text" id="txtCourseCode" name="course_code" value="{{$edit_course->course_code}}">
-                              <label class="mdl-textfield__label">Course Code</label>
-                            </div>
-                            @error('course_code')
-                              <div class="text-danger text-sm">{{ $message }}</div>
-                            @enderror
-                          </div>
-                          <div class="col-lg-6 p-t-20">
-                            <div
-                              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                              <input class="mdl-textfield__input" type="text" id="txtCourseName" name="course_title" value="{{$edit_course->course_title}}">
-                              <label class="mdl-textfield__label">Course Title</label>
-                            </div>
-                            @error('course_title')
-                              <div class="text-danger text-sm">{{ $message }}</div>
-                            @enderror
-                          </div>
-                          <div class="col-lg-6 p-t-20">
-                            <div
                               class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
                               <input class="mdl-textfield__input" type="text" id="year" name="course_year" readonly
                                 tabIndex="-1" value="{{$edit_course->course_year}}">
@@ -106,6 +86,26 @@
                               </ul>
                             </div>
                             @error('course_semester')
+                              <div class="text-danger text-sm">{{ $message }}</div>
+                            @enderror
+                          </div>
+                          <div class="col-lg-6 p-t-20">
+                            <div
+                              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                              <input class="mdl-textfield__input" type="text" id="txtCourseCode" name="course_code" value="{{$edit_course->course_code}}">
+                              <label class="mdl-textfield__label">Course Code</label>
+                            </div>
+                            @error('course_code')
+                              <div class="text-danger text-sm">{{ $message }}</div>
+                            @enderror
+                          </div>
+                          <div class="col-lg-6 p-t-20">
+                            <div
+                              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                              <input class="mdl-textfield__input" type="text" id="txtCourseName" name="course_title" value="{{$edit_course->course_title}}">
+                              <label class="mdl-textfield__label">Course Title</label>
+                            </div>
+                            @error('course_title')
                               <div class="text-danger text-sm">{{ $message }}</div>
                             @enderror
                           </div>

@@ -56,8 +56,10 @@
                                 <p><span><i class="ti-user"></i> Course Credit: {{$courses->course_credit}}</span></p>
                                 <p><span><i class="ti-user"></i> Contact Hours: {{$courses->course_hrs}}hrs</span></p>
                                 <br>
-                                <a href="courses/{{$courses->id}}" role="button"
-                                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">See Details</a>
+                                <div class="course-btn">
+                                  <a href="courses/{{$courses->id}}" role="button"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">See Details</a>
+                                </div>
                               </div>
                             </div>
                           </div>
