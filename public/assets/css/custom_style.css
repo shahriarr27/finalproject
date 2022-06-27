@@ -494,7 +494,8 @@
 
 .class-details{
   transition: .5s;
-
+  border-radius: 5px;
+  border-width: 3px !important;
 }
 
 .class-details-td a:hover>.class-details{

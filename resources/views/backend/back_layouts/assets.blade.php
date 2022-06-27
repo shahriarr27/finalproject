@@ -33,6 +33,8 @@
 	<link rel="stylesheet" href="{{asset('../assets/plugins/material/material.min.css')}}">
 	<link rel="stylesheet" href="{{asset('../assets/css/material_style.css')}}">
 	<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css')}}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	<!-- inbox style -->
 	<link href="{{asset('../assets/css/pages/inbox.min.css')}}" rel="stylesheet" type="text/css" />
 	<!-- full calendar -->

@@ -3,7 +3,7 @@
 @section('content')
 <div class="limiter log-reg-form">
     <div class="container-login100 page-background">
-        @if($errors->any())
+        {{-- @if($errors->any())
             <div class="error-wrapper">
                 @foreach($errors->all() as $error)
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -14,7 +14,7 @@
                     </div>
                 @endforeach
             </div>
-        @endif
+        @endif --}}
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -40,12 +40,18 @@
                         value="{{old('email')}}" />
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
+                @error('email')
+                    <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                @enderror
                 {{-- remember removed x-input --}}
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
                     <input id="password" class="input100" type="password" name="password" placeholder="Password"
                         autocomplete="current-password" />
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
+                @error('password')
+                    <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                @enderror
                 <div class="contact100-form-checkbox">
                     <input id="remember_me" type="checkbox" class="input-checkbox100" name="remember">
                     <label class="label-checkbox100" for="remember_me">

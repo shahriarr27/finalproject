@@ -55,7 +55,7 @@
 								<div class="info-box bg-orange">
 									<span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">New Students</span>
+										<span class="info-box-text">Students</span>
 										<span class="info-box-number">{{count($users->where('reg_type', 'student'))}}</span>
 										<div class="progress">
 											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'student'))}}%"></div>
@@ -70,7 +70,7 @@
 								<div class="info-box bg-blue">
 									<span class="info-box-icon push-bottom"><i class="material-icons">school</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">Total Teachers</span>
+										<span class="info-box-text">Teachers</span>
 										<span class="info-box-number">{{count($users->where('reg_type', 'teacher'))}}</span>
 										<div class="progress">
 											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'teacher'))}}%"></div>
@@ -85,7 +85,7 @@
 								<div class="info-box bg-danger">
 									<span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
 									<div class="info-box-content">
-										<span class="info-box-text">Total Staff</span>
+										<span class="info-box-text">Staff</span>
 										<span class="info-box-number">{{count($users->where('reg_type', 'staff'))}}</span>
 										<div class="progress">
 											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'staff'))}}%"></div>

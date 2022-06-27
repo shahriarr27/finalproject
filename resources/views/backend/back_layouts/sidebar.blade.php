@@ -51,6 +51,17 @@
               </ul>
            </li>
            <li class="nav-item">
+              <a href="#" class="nav-link nav-toggle"> <i class="material-icons">meeting_room</i>
+                 <span class="title">Room Allocation</span> <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                 <li class="nav-item">
+                    <a href="{{route('room.index')}}" class="nav-link "> <span class="title">View Table</span>
+                    </a>
+                 </li>
+              </ul>
+           </li>
+           <li class="nav-item">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
                  <span class="title">Professors</span> <span class="arrow"></span>
               </a>
@@ -85,7 +96,7 @@
                     </a>
                  </li>
                  <li class="nav-item">
-                    <a href="courses/create" class="nav-link "> <span class="title">Add
+                    <a href="{{route('courses.create')}}" class="nav-link "> <span class="title">Add
                           Course</span>
                     </a>
                  </li>
@@ -105,18 +116,18 @@
            </li>
            <li class="nav-item">
               <a href="#" class="nav-link nav-toggle"> <i
-                    class="material-icons">airline_seat_individual_suite</i>
-                 <span class="title">Holiday</span> <span class="arrow"></span>
+                    class="material-icons">assignment</i>
+                 <span class="title">Notices</span> <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
                  <li class="nav-item">
-                    <a href="all_holidays.html" class="nav-link "> <span class="title">All
-                          Holiday</span>
+                    <a href="#" class="nav-link "> <span class="title">All
+                          Notice</span>
                     </a>
                  </li>
                  <li class="nav-item">
-                    <a href="add_holiday.html" class="nav-link "> <span class="title">Add
-                          Holiday</span>
+                    <a href="#" class="nav-link "> <span class="title">Post
+                          Notice</span>
                     </a>
                  </li>
               </ul>

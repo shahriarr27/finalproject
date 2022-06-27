@@ -261,18 +261,7 @@ class ScheduleController extends Controller
         $sc_year = $request->input('course_year');
         $sc_semester = $request->input('course_semester');
 
-        // $startRoom = Schedule::where('schedule_day', $dayId)
-        //         ->where('schedule_room', $sc_room)
-        //         ->whereTime('startTime', '>', $startTime)
-        //         ->whereTime('startTime', '<', $endTime)
-        //         ->exists();
-
-        // $startBacth = Schedule::where('schedule_day', $dayId)
-        //         ->where('course_year', $sc_year)
-        //         ->where('course_semester', $sc_semester)
-        //         ->whereTime('startTime', '>', $startTime)
-        //         ->whereTime('startTime', '<', $endTime)
-        //         ->exists();
+     
 
 
         $roomExistsBtwnST = Schedule::where('schedule_day', $dayId)
@@ -300,7 +289,7 @@ class ScheduleController extends Controller
                         ->where('endTime', '>', $startTime)
                         ->where('endTime', '<', $endTime)
                         ->exists();
-        // if($roomExists->count()>0){
+        
             foreach($roomExists as $singleRE){
                 if(($endTime > $singleRE->startTime && $endTime <= $singleRE->endTime) || ($startTime < $singleRE->startTime && $endTime > $singleRE->endTime)){
                     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
@@ -312,7 +301,6 @@ class ScheduleController extends Controller
 
                 // }
             };
-        // }
 
         // elseif($batchClassExists->count()>0){
             foreach($batchClassExists as $singleBCE){

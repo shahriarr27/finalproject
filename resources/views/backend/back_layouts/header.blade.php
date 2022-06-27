@@ -11,7 +11,7 @@
 				<ul class="nav navbar-nav navbar-left in">
 					<li><a href="#" class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a></li>
 				</ul>
-				<form class="search-form-opened" action="#" method="GET">
+				{{-- <form class="search-form-opened" action="#" method="GET">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search..." name="query">
 						<span class="input-group-btn">
@@ -20,7 +20,8 @@
 							</a>
 						</span>
 					</div>
-				</form>
+				</form> --}}
+				<p class="ml-4 text-uppercase" style="float: left; padding-top:15px; font-size: 18px; color:#222C3C"><b>Dept. of Electrical & Electronic Engineering, BRUR</b></p>
 				<!-- start mobile menu -->
 				<a class="menu-toggler responsive-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
 					<span></span>

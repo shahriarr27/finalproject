@@ -8,7 +8,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Livewire\Dropdown;
 use App\Models\User;
@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('staffs', StaffController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('schedule', ScheduleController::class);
+    Route::resource('room', RoomController::class);
     Route::get('1-1schedule', [RouteController::class, 'schedule1_1'])->name('1-1schedule');
     Route::get('1-2schedule', [RouteController::class, 'schedule1_2'])->name('1-2schedule');
  });

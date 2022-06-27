@@ -21,4 +21,12 @@ class Course extends Model
         'course_image',
         'course_details',
     ];
+
+    // public function scopeSearch($query, $term){
+    //     $term = "%$term%";
+    //     $query->where(function($query) use ($term){
+    //         $query->where('course_year', 'like', $term)
+    //         ->orWhere('course_semester', 'like', $term);
+    //     });
+    // }
 }

@@ -7,7 +7,9 @@
                         <h1 class="mx-auto"><img class="home-logo" alt="Logo" src="../assets/img/logo-2.png"></h1>
                         <h1 class="display-5 fw-bold mb-3">Smart EEE</h1>
                         <div class="col-lg-6 mx-auto">
-                        <p class="lead mb-4">Doubtless whether no nevermore syllable what my the thy doubtless obeisance, thing beating still me wide sculptured while separate burning, nevermore chamber art the radiant hope take bosoms doubtless.</p>
+                        <p class="lead mb-4">This is a demo landing page of <b> Automatic Class Schedule Management System.</b>
+                            This system helps to create automatic class schedule by checking various conditions. As like checking previous room allocation, session schedule overlaping, etc.
+                        </p>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                             
                                 @if (Route::has('login'))

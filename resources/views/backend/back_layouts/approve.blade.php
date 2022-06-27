@@ -82,8 +82,8 @@
 										<div class="col-lg-6 p-t-20">
 											<div
 												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-												<input class="mdl-textfield__input" type="text" id="txtLasttName" name="lastname" value="{{ $id_info->name }}">
-												<label class="mdl-textfield__label" disabled>Full Name</label>
+												<input class="mdl-textfield__input" type="text" id="txtLasttName" name="lastname" value="{{ $id_info->name }}"disabled>
+												<label class="mdl-textfield__label" >Full Name</label>
 											</div>
 											@error('lastname')
 													<div class="text-danger text-sm">{{ $message }}</div>

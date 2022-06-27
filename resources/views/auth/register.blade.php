@@ -4,7 +4,7 @@
 
 <div class="limiter log-reg-form">
     <div class="container-login100 page-background">
-        @if($errors->any())
+        {{-- @if($errors->any())
             <div class="error-wrapper">
                 @foreach($errors->all() as $error)
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -15,7 +15,7 @@
                     </div>
                 @endforeach
             </div>
-        @endif
+        @endif --}}
         <div class="wrap-login100 wrap-register">
             <form class="login100-form validate-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
@@ -34,6 +34,9 @@
                                 value="{{ old('name') }}" placeholder="Firstname">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
+                        @error('firstname')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6  p-t-5">
                         <div class="wrap-input100 validate-input" data-validate="Enter username">
@@ -41,6 +44,9 @@
                                 value="{{ old('name') }}" placeholder="Lastname">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
+                        @error('lastname')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input" data-validate="Enter username">
@@ -48,6 +54,9 @@
                                 placeholder="Certificate name">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
+                        @error('name')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input" data-validate="Enter email">
@@ -55,6 +64,9 @@
                                 value="{{ old('email') }}" placeholder="Email">
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
+                        @error('email')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -62,6 +74,9 @@
                                 :value="__('Password')">
                             <span class="focus-input100" data-placeholder="&#xf191;"></span>
                         </div>
+                        @error('password')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input" data-validate="Enter password again">
@@ -69,6 +84,9 @@
                                 placeholder="Confirm password" :value="__('Confirm Password')">
                             <span class="focus-input100" data-placeholder="&#xf191;"></span>
                         </div>
+                        @error('password_confirmation')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input">
@@ -76,6 +94,9 @@
                                 value="{{ old('date_of_birth') }}" placeholder="Birth Date">
                             <span class="focus-input100" data-placeholder="&#x1F4C5;"></span>
                         </div>
+                        @error('date_of_birth')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input">
@@ -83,6 +104,9 @@
                                 value="{{ old('address') }}" placeholder="Address">
                             <span class="focus-input100" data-placeholder="&#9963;"></span>
                         </div>
+                        @error('address')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="wrap-input100 validate-input">
@@ -91,6 +115,9 @@
                             <span class="focus-input100" data-placeholder="&#9742;"></span>
                             {{-- pattern="[0-9]{3}-[0-9]{8}" --}}
                         </div>
+                        @error('mobile')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="file-upload">
@@ -100,6 +127,9 @@
                                 <input type="file" name="profile_picture" id="file-upload-input">
                             </div>
                         </div>
+                        @error('profile_picture')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth select-width"
@@ -117,6 +147,9 @@
                                 <li class="mdl-menu__item" value="female">Female</li>
                             </ul>
                         </div>
+                        @error('gender')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-lg-6  p-t-5">
                         <label class="text-white text-sm" style="display: flex; align-items:center">
@@ -129,6 +162,9 @@
                             <option value="staff">Staff</option>
                             <option value="super_admin" hidden>Super Admin</option>
                         </select>
+                        @error('reg_type')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div id="teacher_fields" style="display:none;">
                         <div class="row">
@@ -140,6 +176,9 @@
                                 </div>
                             </div>
                         </div>
+                        @error('designation')
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div id="student_fields" style="display:none;">
                         <div class="row">
