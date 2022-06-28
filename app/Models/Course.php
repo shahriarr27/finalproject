@@ -19,6 +19,7 @@ class Course extends Model
         'course_hrs',
         'course_teacher',
         'course_image',
+        'course_file',
         'course_details',
     ];
 

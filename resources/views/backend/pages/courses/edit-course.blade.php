@@ -162,6 +162,16 @@
                                 <div class="text-danger text-sm">{{ $message }}</div>
                               @enderror
                           </div>
+                          <div class="col-lg-6 p-t-20">
+                            <div class="custom-file2">
+                              <label for="course_file_name" class="mb-3 text-muted">Attach file</label>
+                              <p class="mb-3"><a href="{{ url('storage/course_files/'.$edit_course->course_file) }}">{{$edit_course->course_file}}</a></p>
+                              <input type="file" class="custom-file-input2" id="course_file_name" aria-describedby="course_file" name="course_file">
+                            </div>
+                              @error('course_file')
+                                <div class="text-danger text-sm">{{ $message }}</div>
+                              @enderror
+                          </div>
                           <div class="col-lg-12 p-t-20">
                             <div class="mdl-textfield mdl-js-textfield txt-full-width">
                               <label class="text-sm text-muted" for="text7">Course Syllabus</label>

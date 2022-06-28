@@ -96,7 +96,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == '401' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -106,7 +106,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == '402' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -116,7 +116,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == '411' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -126,7 +126,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == '413' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -136,7 +136,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == '414' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -146,7 +146,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == 'Lab-01' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @endif
                                               @endforeach
                                             @endforeach
@@ -156,7 +156,7 @@
                                             @foreach ($sc_room as $room => $sroom)
                                               @foreach ($sroom as $item)
                                                 @if ($item->schedule_room == 'Lab-02' && $item->schedule_day == 'sun')
-                                                  <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                  <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                   @else
                                                 @endif
                                               @endforeach
@@ -172,7 +172,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '401' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -182,7 +182,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '402' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -192,7 +192,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '411' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -202,7 +202,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '413' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -212,7 +212,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '414' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -222,7 +222,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-01' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -232,7 +232,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-02' && $item->schedule_day == 'mon')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @else
                                               @endif
                                             @endforeach
@@ -248,7 +248,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '401' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -258,7 +258,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '402' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -268,7 +268,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '411' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -278,7 +278,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '413' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -288,7 +288,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '414' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -298,7 +298,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-01' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -308,7 +308,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-02' && $item->schedule_day == 'tue')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @else
                                               @endif
                                             @endforeach
@@ -324,7 +324,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '401' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -334,7 +334,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '402' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -344,7 +344,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '411' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -354,7 +354,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '413' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -364,7 +364,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '414' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -374,7 +374,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-01' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -384,7 +384,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-02' && $item->schedule_day == 'wed')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @else
                                               @endif
                                             @endforeach
@@ -400,7 +400,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '401' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -410,7 +410,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '402' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -420,7 +420,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '411' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -430,7 +430,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '413' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -440,7 +440,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == '414' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -450,7 +450,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-01' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                               @endif
                                             @endforeach
                                           @endforeach
@@ -460,7 +460,7 @@
                                           @foreach ($sc_room as $room => $sroom)
                                             @foreach ($sroom as $item)
                                               @if ($item->schedule_room == 'Lab-02' && $item->schedule_day == 'thr')
-                                                <span class="times px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
+                                                <span class="times font-bold px-2 text-danger" style="border-right: 1px solid gray;">{{ date('g:i A', strtotime($item->startTime)). ' - ' .date('g:i A', strtotime($item->endTime))}}</span>
                                                 @else
                                               @endif
                                             @endforeach

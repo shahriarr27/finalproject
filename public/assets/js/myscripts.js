@@ -35,4 +35,3 @@ fileInput.onchange = function() {
   selectName.innerText = filename;
 }
 
-

@@ -38,7 +38,7 @@
                 <div class="table-wrapper">
                     <div class="card card-box">
                         <div class="card-head">
-                          <header>Class Schedule</header>
+                          <header>1st Year 1st Semester Schedule</header>
                           <div class="tools">
                             <a class="fa fa-repeat btn-color box-refresh"
                               href="javascript:;"></a>

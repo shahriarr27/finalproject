@@ -52,6 +52,7 @@ class CourseController extends Controller
             'course_hrs' => 'required',
             'course_teacher' => 'required',
             'course_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5048',
+            'course_file' => 'max:5048',
             'course_details' => 'required',
         ]);
 
@@ -60,6 +61,11 @@ class CourseController extends Controller
             $name = $request->file('course_image')->getClientOriginalName();
             $filename = time().$name;
             $request->file('course_image')->storeAs('public/course_image',  $filename);
+        }
+        if($request->hasFile('course_file')){
+            $name = $request->file('course_file')->getClientOriginalName();
+            $filefilename = time().$name;
+            $request->file('course_file')->storeAs('public/course_files',  $filefilename);
         }
 
         $course = Course::create([
@@ -71,6 +77,7 @@ class CourseController extends Controller
             'course_hrs' => $request->course_hrs,
             'course_teacher' => $request->course_teacher,
             'course_image' => $filename,
+            'course_file' => $filefilename,
             'course_details' => $request->course_details,
         ]);
         $course->save();
@@ -123,6 +130,7 @@ class CourseController extends Controller
             'course_hrs' => 'required',
             'course_teacher' => 'required',
             'course_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:5048',
+            'course_file' => 'max:5048',
             'course_details' => 'required',
         ]);
 
@@ -147,6 +155,20 @@ class CourseController extends Controller
             $filename = time().$file;
             $request->file('course_image')->storeAs('public/course_image',  $filename);
             $edit_course->course_image = $filename;
+        }
+
+        if($request->hasFile('course_file')){
+
+            $destination = storage_path('app/public/course_files/'.$edit_course->course_file);
+
+            if(File::exists($destination)){
+                File::delete($destination);
+            };
+            $file = $request->file('course_file')->getClientOriginalName();
+            // $extension = $request->file('course_file')->getClientOriginalExtension();
+            $filefilename = time().$file;
+            $request->file('course_file')->storeAs('public/course_files',  $filefilename);
+            $edit_course->course_file= $filefilename;
         }
 
         $edit_course->update();

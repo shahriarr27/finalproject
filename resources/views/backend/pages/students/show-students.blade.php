@@ -61,14 +61,17 @@
                               </div>
                               <div class="card-body ">
                                 <div class="row">
-                                  <div class="col-md-6 col-sm-6 col-6">
-                                    <div class="btn-group show">
-                                      <a href="" id="addRow"
-                                        class="btn btn-info">
-                                        Add New <i class="fa fa-plus"></i>
-                                      </a>
-                                    </div>
+                                  <div class="col-md-3 col-sm-6 col-6">
+                                      <div class="search-wrapper p-3">
+                                        <select name="" id="session-filter" class="custom-select filter">
+                                          <option value="">Select Session</option>
+                                          @foreach ($session as $student_session)
+                                          <option value="{{$student_session->student_session}}">{{$student_session->student_session}}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
                                   </div>
+                                  <div class="col-md-3"></div>
                                   <div class="col-md-6 col-sm-6 col-6">
                                     <div class="btn-group pull-right show">
                                       <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle"
@@ -97,15 +100,6 @@
                                 <div class="result-table">
                                   <div class="row">
                                     <div class="col-lg-3">
-                                      <div class="search-wrapper p-3">
-                                        <label for="">Select Session</label>
-                                        <select name="" id="session-filter" class="custom-select filter">
-                                          <option value="">Select Session</option>
-                                          @foreach ($session as $student_session)
-                                          <option value="{{$student_session->student_session}}">{{$student_session->student_session}}</option>
-                                          @endforeach
-                                        </select>
-                                      </div>
                                     </div>
                                     <div class="col-lg-6"></div>
                                   </div>

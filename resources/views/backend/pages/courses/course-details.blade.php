@@ -87,7 +87,11 @@
 														<h4 class="font-bold">Course Syllabus</h4>
 														<hr>
                             {!!$course_details->course_details!!}
-														<br>
+														<br><br>
+														<div class="attached-file py-5">
+															<p><b>Attached Files:</b></p>
+															<p><a href="{{ url('storage/course_files/'.$course_details->course_file) }}">{{$course_details->course_file}}</a></p>
+														</div>
                             <a href="{{$course_details->id}}/edit" class="btn btn-sm btn-info">Edit Course</a>
 													</div>
 												</div>
