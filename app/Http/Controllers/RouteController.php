@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class RouteController extends Controller
 {
     public function schedule1_1(){
+        $title = '1y-1s Schedules';
         $sort = array('sun', 'mon', 'tue', 'wed', 'thr');
         $schedules = DB::table('schedules2')
         ->orderByRaw('startTime asc')
@@ -30,11 +31,12 @@ class RouteController extends Controller
         $sc_ys = Schedule::where($matchthese)->get();
 
         
-        return view('backend.pages.schedule.1y1s')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'schedulesTime' =>$schedulesTime, 'joinTable'=> $joinTable]);
+        return view('backend.pages.schedule.1y1s')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'schedulesTime' =>$schedulesTime, 'joinTable'=> $joinTable,'title'=>$title]);
     }
 
     
     public function schedule1_2(){
+        $title = '1y-2s Schedules';
         $sort = array('sun', 'mon', 'tue', 'wed', 'thr');
         $schedules = DB::table('schedules2')
         ->orderByRaw('startTime asc')
@@ -55,6 +57,6 @@ class RouteController extends Controller
         $sc_ys = Schedule::where($matchthese)->get();
 
         
-        return view('backend.pages.schedule.1y2s')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'schedulesTime' =>$schedulesTime, 'joinTable'=> $joinTable]);
+        return view('backend.pages.schedule.1y2s')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'schedulesTime' =>$schedulesTime, 'joinTable'=> $joinTable,'title'=>$title]);
     }
 }

@@ -486,6 +486,7 @@
 .table-scroll{
   max-width: 100%;
   overflow-x: scroll;
+  cursor:move;
 }
 
 .class-details-td{
@@ -516,4 +517,32 @@
   position: absolute;
   bottom: 10px;
   left: 30px;
+}
+
+
+.dark-sidebar-color .sidemenu-container .sidemenu>li.active>a{
+  background: #fdfeff;
+  color: #000428;
+}
+.dark-sidebar-color .sidemenu-container .sidemenu>li.active>a>i{
+  color: #000428;
+}
+.dark-sidebar-color .sidemenu-container .sidemenu>li.active>a>.arrow:before{
+  color: #000428;
+}
+
+.dark-sidebar-color .sidemenu-container .sidemenu>li.open>a{
+  background: #141b3a;
+  color: #ffffff;
+}
+.dark-sidebar-color .sidemenu-container .sidemenu>li.open>a>i{
+  color: #ffffff;
+}
+.dark-sidebar-color .sidemenu-container .sidemenu>li.open>a>.arrow.open:before, .dark-sidebar-color .sidemenu-container .sidemenu>li.open>a>.arrow:before{
+  color: #ffffff;
+}
+
+.sidemenu-closed .sidemenu-container .slimscroll-style{
+  position: fixed;
+  background: #222C3C;
 }

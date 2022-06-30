@@ -17,6 +17,7 @@ class RoomController extends Controller
      */
     public function index()
     {
+        $title = 'Room Allocation Time';
         $sort = array('sun', 'mon', 'tue', 'wed', 'thr');
         $schedules = DB::table('schedules2')
         ->orderByRaw('startTime asc')
@@ -28,7 +29,7 @@ class RoomController extends Controller
 
         $joinTable = Schedule::join('course', 'course.course_code', '=' , 'schedules2.course_code')->distinct()->get(['course.course_title', 'course.course_teacher', 'course.course_code']);
 
-        return view('backend.pages.schedule.roomtable')->with(['schedules'=> $schedules, 'sc_room'=>$sc_room, 'joinTable'=> $joinTable]);
+        return view('backend.pages.schedule.roomtable')->with(['schedules'=> $schedules, 'sc_room'=>$sc_room, 'joinTable'=> $joinTable,'title'=>$title]);
     }
 
     /**

@@ -19,9 +19,10 @@ class CourseController extends Controller
      */
     public function index()
     {
+        $title = 'All Courses';
         $course =  Course::orderBy('course_code', 'asc')
         ->get();
-        return view('backend.pages.courses.show-courses')->with('course', $course);
+        return view('backend.pages.courses.show-courses')->with(['course'=> $course,'title'=>$title]);
     }
 
     /**
@@ -31,8 +32,9 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $title = 'Add Course';
         $technames = User::get()->where('reg_type', 'teacher');
-        return view('backend.pages.courses.create-course')->with('technames', $technames);
+        return view('backend.pages.courses.create-course')->with(['technames'=> $technames,'title'=>$title]);
     }
 
     /**
@@ -94,8 +96,10 @@ class CourseController extends Controller
      */
     public function show($id)
     {
+
         $course_details = Course::find($id);
-        return view('backend.pages.courses.course-details')->with('course_details', $course_details);
+        $title = $course_details->course_title;
+        return view('backend.pages.courses.course-details')->with(['course_details'=> $course_details,'title'=>$title]);
     }
 
     /**
@@ -107,8 +111,9 @@ class CourseController extends Controller
     public function edit($id)
     {
         $edit_course = Course::find($id);
+        $title = $edit_course->course_title;
         $technames = User::get()->where('reg_type', 'teacher');
-        return view('backend.pages.courses.edit-course')->with(['edit_course'=> $edit_course, 'technames'=> $technames]);
+        return view('backend.pages.courses.edit-course')->with(['edit_course'=> $edit_course, 'technames'=> $technames,'title'=>$title]);
     }
 
     /**

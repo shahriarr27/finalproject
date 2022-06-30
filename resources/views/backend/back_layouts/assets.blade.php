@@ -8,7 +8,7 @@
 	<meta name="description" content="Responsive Admin Template" />
 	<meta name="author" content="SmartUniversity" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>Smart University | Dashboard</title>
+	<title>{{config('app.name', 'Laravel') }} {{isset($title)?' - '. $title : ''}}</title>
 
 	{{-- App style --}}
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">

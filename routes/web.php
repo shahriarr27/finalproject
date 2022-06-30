@@ -29,11 +29,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-
+    $title = 'Dashboard';
     $users = User::orderBy('id', 'desc')
     ->get();
     $count_student = User::where('reg_type', 'student')->get();
-    return view('backend.pages.dashboard')->with(['users'=> $users, 'count_student'=>$count_student]);
+    return view('backend.pages.dashboard')->with(['users'=> $users, 'count_student'=>$count_student, 'title'=>$title]);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

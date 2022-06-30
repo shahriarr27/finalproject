@@ -14,10 +14,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
+        $title = 'All Teachers';
         $teachers = User::orderBy('id', 'desc')
         ->get()->where('reg_type', 'teacher' );
         
-        return view('backend.pages.teachers.show-teachers')->with('teachers', $teachers);
+        return view('backend.pages.teachers.show-teachers')->with(['teachers'=> $teachers,'title'=>$title]);
     }
 
     /**

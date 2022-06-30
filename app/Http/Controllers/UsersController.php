@@ -59,8 +59,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $info = User::where('id', $id)->get();
-        return view('backend.back_layouts.approve')->with('info', $info);
+        $id_info = User::find($id);
+        $title = $id_info->name;
+        return view('backend.back_layouts.approve')->with(['id_info'=> $id_info,'title'=>$title]);
     }
 
     /**
@@ -74,11 +75,12 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->approval = $request->approval;
-        $user->update();
         if($user->approval ==1){
+            $user->update();
             return redirect('/dashboard')->with('success', $user->name.'\'s registration has been approved!');
         }
         elseif($user->approval ==0){
+            $user->delete();
             return redirect('/dashboard')->with('success', $user->name.'\'s registration has been Canceled!');
         }
     }

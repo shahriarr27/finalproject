@@ -45,9 +45,9 @@
 											here</li>
 									</ul>
 								</div>
-								@foreach ($info as $id_info)
+								{{-- @foreach ($info as $id_info) --}}
                     
-								<form  method="POST" action="/users/{{$id_info->id}}">
+								<form  method="POST" action="{{ url('users/'.$id_info->id) }}">
 									@method('PUT')
 									@csrf
 									<div class="card-body row">
@@ -197,7 +197,7 @@
 										</div>
 									</div>
 								</form>
-                @endforeach
+                {{-- @endforeach --}}
 
 							</div>
 						</div>

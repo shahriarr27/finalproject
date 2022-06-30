@@ -14,10 +14,11 @@ class StaffController extends Controller
      */
     public function index()
     {
+        $title = 'All Staff';
         $staffs = User::orderBy('id', 'desc')
         ->get()->where('reg_type', 'staff' );
         
-        return view('backend.pages.staffs.show-staffs')->with('staffs', $staffs);
+        return view('backend.pages.staffs.show-staffs')->with(['staffs'=> $staffs,'title'=>$title]);
     }
 
     /**

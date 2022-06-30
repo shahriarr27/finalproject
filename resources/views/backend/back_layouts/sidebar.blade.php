@@ -21,93 +21,93 @@
               </div>
            </li>
 
-           <li class="nav-item start active">
+           <li class="nav-item start {{ (request()->path() == 'dashboard') ? 'active' : '' }}">
               <a href="/dashboard" class="nav-link ">
                  <i class="material-icons">dashboard</i>
                  <span class="title">Dashboard</span>
                  <span class="selected"></span>
               </a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item  {{ (request()->path() == 'schedule/create' || request()->path() == 'schedule' || request()->path() == '1-1schedule' || request()->path() == '1-2schedule') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"><i class="material-icons">event</i>
                  <span class="title">Class Schedules</span><span class="arrow"></span></a>
               <ul class="sub-menu">
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'schedule/create') ? 'active' : '' }}">
                     <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
                     </a>
                  </li>
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == '1-1schedule') ? 'active' : '' }}">
                     <a href="{{route('1-1schedule')}}" class="nav-link "> <span class="title">1st Year 1st Semester</span>
                     </a>
                  </li>
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == '1-2schedule') ? 'active' : '' }}">
                     <a href="{{route('1-2schedule')}}" class="nav-link "> <span class="title">1st Year 2nd Semester</span>
                     </a>
                  </li>
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'schedule') ? 'active' : '' }}">
                     <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
                     </a>
                  </li>
               </ul>
            </li>
-           <li class="nav-item">
+           <li class="nav-item {{ (request()->path() == 'room') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">meeting_room</i>
                  <span class="title">Room Allocation</span> <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'room') ? 'active' : '' }}">
                     <a href="{{route('room.index')}}" class="nav-link "> <span class="title">View Table</span>
                     </a>
                  </li>
               </ul>
            </li>
-           <li class="nav-item">
-              <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
-                 <span class="title">Professors</span> <span class="arrow"></span>
-              </a>
-              <ul class="sub-menu">
-                 <li class="nav-item">
-                    <a href="/teachers" class="nav-link "> <span class="title">All
-                          Professors</span>
-                    </a>
-                 </li>
-              </ul>
-           </li>
-           <li class="nav-item">
-              <a href="#" class="nav-link nav-toggle"><i class="material-icons">group</i>
-                 <span class="title">Students</span><span class="arrow"></span></a>
-              <ul class="sub-menu">
-                 <li class="nav-item">
-                    <a href="{{route('student.index')}}" class="nav-link "> <span class="title">All
-                          Students</span>
-                    </a>
-                 </li>
-              </ul>
-           </li>
-           <li class="nav-item">
+           <li class="nav-item {{ (request()->path() == 'courses' || request()->path() == 'courses/create') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">school</i>
                  <span class="title">Courses</span> <span class="arrow"></span>
-                 <span class="label label-rouded label-menu label-success">new</span>
+                 {{-- <span class="label label-rouded label-menu label-success">new</span> --}}
               </a>
               <ul class="sub-menu">
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'courses') ? 'active' : '' }}">
                     <a href="{{route('courses.index')}}" class="nav-link "> <span class="title">All
                           Courses</span>
                     </a>
                  </li>
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'courses/create') ? 'active' : '' }}">
                     <a href="{{route('courses.create')}}" class="nav-link "> <span class="title">Add
                           Course</span>
                     </a>
                  </li>
               </ul>
            </li>
-           <li class="nav-item">
+           <li class="nav-item {{ (request()->path() == 'teachers') ? 'active' : '' }}">
+              <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                 <span class="title">Professors</span> <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                 <li class="nav-item {{ (request()->path() == 'teachers') ? 'active' : '' }}">
+                    <a href="/teachers" class="nav-link "> <span class="title">All
+                          Professors</span>
+                    </a>
+                 </li>
+              </ul>
+           </li>
+           <li class="nav-item {{ (request()->path() == 'student') ? 'active' : '' }}">
+              <a href="#" class="nav-link nav-toggle"><i class="material-icons">group</i>
+                 <span class="title">Students</span><span class="arrow"></span></a>
+              <ul class="sub-menu">
+                 <li class="nav-item {{ (request()->path() == 'student') ? 'active' : '' }}">
+                    <a href="{{route('student.index')}}" class="nav-link "> <span class="title">All
+                          Students</span>
+                    </a>
+                 </li>
+              </ul>
+           </li>
+           <li class="nav-item {{ (request()->path() == 'staffs') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">face</i>
                  <span class="title">Staff</span> <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
-                 <li class="nav-item">
+                 <li class="nav-item {{ (request()->path() == 'staffs') ? 'active' : '' }}">
                     <a href="/staffs" class="nav-link "> <span class="title">All
                           Staff</span>
                     </a>

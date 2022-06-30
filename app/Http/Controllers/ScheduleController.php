@@ -17,6 +17,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $title = 'All Schedules';
         $sort = array('sun', 'mon', 'tue', 'wed', 'thr');
         $schedules = DB::table('schedules2')
         ->orderByRaw('startTime asc')
@@ -28,7 +29,7 @@ class ScheduleController extends Controller
 
         $joinTable = Schedule::join('course', 'course.course_code', '=' , 'schedules2.course_code')->distinct()->get(['course.course_title', 'course.course_teacher', 'course.course_code']);
 
-        return view('backend.pages.schedule.show-schedule')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'joinTable'=> $joinTable]);
+        return view('backend.pages.schedule.show-schedule')->with(['schedules'=> $schedules, 'sc_courses'=>$sc_courses, 'joinTable'=> $joinTable,'title'=>$title]);
     }
 
     /**
@@ -38,9 +39,10 @@ class ScheduleController extends Controller
      */
     public function create()
     {
+        $title = 'Create Schedule';
         $getyear=DB::table('course')->select('course_year')->groupBy('course_year')->orderBy('course_year','asc')->get();
         $technames = User::get()->where('reg_type', 'teacher');
-        return view('backend.pages.schedule.create-schedule')->with(['technames'=> $technames, 'getyear'=> $getyear]);
+        return view('backend.pages.schedule.create-schedule')->with(['technames'=> $technames, 'getyear'=> $getyear,'title'=>$title]);
     }
 
     /**
@@ -64,27 +66,11 @@ class ScheduleController extends Controller
         ]);
 
         $startTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('startTime')))->addMinute(1);
-        // $endTime = Carbon::parse(str_replace(array('am', 'pm'), ':00', $request->input('endTime')));
-        // $startTime = $request->input('startTime');
         $endTime = $request->input('endTime');
         $dayId = $request->input('schedule_day');
         $sc_room = $request->input('schedule_room');
         $sc_year = $request->input('course_year');
         $sc_semester = $request->input('course_semester');
-
-        // $startRoom = Schedule::where('schedule_day', $dayId)
-        //         ->where('schedule_room', $sc_room)
-        //         ->whereTime('startTime', '>', $startTime)
-        //         ->whereTime('startTime', '<', $endTime)
-        //         ->exists();
-
-        // $startBacth = Schedule::where('schedule_day', $dayId)
-        //         ->where('course_year', $sc_year)
-        //         ->where('course_semester', $sc_semester)
-        //         ->whereTime('startTime', '>', $startTime)
-        //         ->whereTime('startTime', '<', $endTime)
-        //         ->exists();
-
 
         $roomExistsBtwnST = Schedule::where('schedule_day', $dayId)
                         ->where('schedule_room', $sc_room)
@@ -111,31 +97,17 @@ class ScheduleController extends Controller
                         ->where('endTime', '>', $startTime)
                         ->where('endTime', '<', $endTime)
                         ->exists();
-        // if($roomExists->count()>0){
+
             foreach($roomExists as $singleRE){
                 if(($endTime > $singleRE->startTime && $endTime <= $singleRE->endTime) || ($startTime < $singleRE->startTime && $endTime > $singleRE->endTime)){
                     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
-                    // dd('room overlap');  
-                    // || ($startTime > $singleRE->startTime && $endTime > $singleRE->endTime)  $startTime >= $singleRE->startTime && $endTime <= $singleRE->endTime) || 
                 }
-                // else{
-                //     dd(' room ok');
-
-                // }
             };
-        // }
 
-        // elseif($batchClassExists->count()>0){
             foreach($batchClassExists as $singleBCE){
                 if(($endTime > $singleBCE->startTime && $endTime < $singleBCE->endTime) || ($startTime < $singleBCE->startTime && $endTime > $singleBCE->endTime)){
                     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule at this time!');
-                //  dd('overlap');
-                //    || ($startTime > $singleBCE->startTime && $endTime > $singleBCE->endTime)  ($startTime >= $singleBCE->startTime && $endTime <= $singleBCE->endTime) || 
                 }
-                // else{
-                //     dd($startTime);
-
-                // }
             };
 
             if($roomExistsBtwn){
@@ -148,7 +120,6 @@ class ScheduleController extends Controller
             if($batchClassExistsBtwn){
                 return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch have another schedule between these times!');
             }
-        // }
 
             $schedule = Schedule::create([
                 'course_year' => $request->course_year,
@@ -163,47 +134,6 @@ class ScheduleController extends Controller
             $schedule->save();
     
             return redirect()->action([ScheduleController::class, 'index'])->with('success', 'Schedule added successfully!');
-        
-        // $dayExists = Schedule::where('schedule_day', $dayId)
-        //                 ->exists();
-        // $roomExists = Schedule::where('schedule_day', $dayId)
-        //                 ->where('schedule_room', $sc_room)
-        //                 ->exists();
-        // $batchExists = Schedule::where('schedule_day', $dayId)
-        //                 ->where('course_year', $sc_year)
-        //                 ->where('course_semester', $sc_semester)
-        //                 ->exists();
-        
-        // foreach($getysem as $ys){
-
-            // $lastendTime = $ys->endTime;
-            // dd($ys);
-
-
-
-            // if(($roomExists)){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This room is allocated at this time!');
-            // }
-            // elseif($batchClassExists){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'This batch has another schedule at this time!');
-            // }
-
-
-
-            // elseif($timeExists && $batchExists && $dayExists){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class at this time!');
-            // }
-            // elseif($startBacth && $dayExists){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'They have another class between these times!');
-            // }
-            // elseif($startRoom && $roomExists && $dayExists){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between these times!');
-            // }
-            // elseif($roomExists && $dayExists && $endTime->between($ys->startTime, $ys->endTime, true)){
-            //     return redirect()->action([ScheduleController::class, 'create'])->with('error', 'Room is taken between this end times!');
-            // }
-        // }
-
 
     }
 
@@ -226,8 +156,9 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Edit Schedule';
         $editSchedule = Schedule::find($id);
-        return view('backend.pages.schedule.edit-schedule')->with('editSchedule', $editSchedule);
+        return view('backend.pages.schedule.edit-schedule')->with(['editSchedule'=> $editSchedule,'title'=>$title]);
     }
 
     /**

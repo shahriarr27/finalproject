@@ -18,13 +18,14 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $title = 'All Students';
         $students = User::orderBy('id', 'desc')
         ->get()->where('reg_type', 'student' );
         
         $session = User::where('reg_type', 'student' )
         ->distinct()
         ->get('student_session');
-        return view('backend.pages.students.show-students')->with(['students' => $students, 'session'=> $session]);
+        return view('backend.pages.students.show-students')->with(['students' => $students, 'session'=> $session,'title'=>$title]);
     }
 
     /**

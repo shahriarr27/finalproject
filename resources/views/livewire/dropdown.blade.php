@@ -92,20 +92,6 @@
             <div class="text-danger text-sm">{{ $message }}</div>
         @enderror
     </div>
-      {{-- <div class="col-lg-6 p-t-20">
-        <label for="startTime" class="text-muted text-sm mb-0">Starting Time</label>
-        <div class="input-group date timePicker" id="timePicker">
-          <input type="text" class="form-control timePicker" id="startTime">
-          <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-        </div>
-      </div>
-      <div class="col-lg-6 p-t-20">
-        <label for="endTime" class="text-muted text-sm mb-0">Ending Time</label>
-        <div class="input-group date timePicker" id="timePicker2">
-          <input type="text" class="form-control timePicker" id="endTime">
-          <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-        </div>
-      </div> --}}
     
       <div class="col-lg-6 p-t-20">
         <label for="schedule_room" class="text-muted text-sm mb-0">Select Room</label>
