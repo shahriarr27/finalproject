@@ -33,6 +33,8 @@ class User extends Authenticatable
         'designation',
         'student_id',
         'student_session',
+        'student_year',
+        'student_semester',
         'approval',
     ];
 

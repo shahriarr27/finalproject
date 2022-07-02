@@ -1,4 +1,4 @@
-#select-type option{
+.select-type option{
     text-transform: capitalize;
 }
 .mdl-menu__outline{

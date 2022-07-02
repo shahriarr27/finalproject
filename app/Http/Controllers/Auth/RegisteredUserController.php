@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -43,7 +44,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $valid = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'name' => ['required', 'string', 'max:255'],
@@ -55,8 +56,12 @@ class RegisteredUserController extends Controller
             'profile_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5048',
             'gender' => 'required',
             'reg_type' => 'required|not_in:0',
+            'designation' => 'required_if:reg_type,teacher',
+            'student_id'=> 'required_if:reg_type,student',
+            'student_session'=> 'required_if:reg_type,student',
+            'student_year'=> 'required_if:reg_type,student',
+            'student_semester'=> 'required_if:reg_type,student',
         ]);
-
         if($request->hasFile('profile_picture')){
             $name = $request->file('profile_picture')->getClientOriginalName();
             $filename = time().$name;
@@ -79,6 +84,8 @@ class RegisteredUserController extends Controller
             'designation' => $request->designation,
             'student_id' => $request->student_id,
             'student_session' => $request->student_session,
+            'student_year'=> $request->student_year,
+            'student_semester'=> $request->student_semester,
             'approval' => false,
         ]);
           

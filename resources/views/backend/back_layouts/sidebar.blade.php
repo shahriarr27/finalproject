@@ -32,24 +32,34 @@
               <a href="#" class="nav-link nav-toggle"><i class="material-icons">event</i>
                  <span class="title">Class Schedules</span><span class="arrow"></span></a>
               <ul class="sub-menu">
-                 <li class="nav-item {{ (request()->path() == 'schedule/create') ? 'active' : '' }}">
-                    <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
-                    </a>
-                 </li>
+                  @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                     <li class="nav-item {{ (request()->path() == 'schedule/create') ? 'active' : '' }}">
+                        <a href="{{route('schedule.create')}}" class="nav-link "> <span class="title">Create Schedule</span>
+                        </a>
+                     </li>
+                 @endif
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '1st Semester'))
                  <li class="nav-item {{ (request()->path() == '1-1schedule') ? 'active' : '' }}">
                     <a href="{{route('1-1schedule')}}" class="nav-link "> <span class="title">1st Year 1st Semester</span>
                     </a>
                  </li>
+                 @endif
+                 
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '2nd Semester'))
                  <li class="nav-item {{ (request()->path() == '1-2schedule') ? 'active' : '' }}">
                     <a href="{{route('1-2schedule')}}" class="nav-link "> <span class="title">1st Year 2nd Semester</span>
                     </a>
                  </li>
+                 @endif
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                  <li class="nav-item {{ (request()->path() == 'schedule') ? 'active' : '' }}">
                     <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
                     </a>
                  </li>
+                 @endif
               </ul>
            </li>
+           @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'staff' || Auth::user()->reg_type == 'teacher')
            <li class="nav-item {{ (request()->path() == 'room') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">meeting_room</i>
                  <span class="title">Room Allocation</span> <span class="arrow"></span>
@@ -61,6 +71,7 @@
                  </li>
               </ul>
            </li>
+           @endif
            <li class="nav-item {{ (request()->path() == 'courses' || request()->path() == 'courses/create') ? 'active' : '' }}">
               <a href="#" class="nav-link nav-toggle"> <i class="material-icons">school</i>
                  <span class="title">Courses</span> <span class="arrow"></span>
@@ -72,11 +83,13 @@
                           Courses</span>
                     </a>
                  </li>
-                 <li class="nav-item {{ (request()->path() == 'courses/create') ? 'active' : '' }}">
-                    <a href="{{route('courses.create')}}" class="nav-link "> <span class="title">Add
-                          Course</span>
-                    </a>
-                 </li>
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'staff')
+                  <li class="nav-item {{ (request()->path() == 'courses/create') ? 'active' : '' }}">
+                     <a href="{{route('courses.create')}}" class="nav-link "> <span class="title">Add
+                           Course</span>
+                     </a>
+                  </li>
+                 @endif
               </ul>
            </li>
            <li class="nav-item {{ (request()->path() == 'teachers') ? 'active' : '' }}">

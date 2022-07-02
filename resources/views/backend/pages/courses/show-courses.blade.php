@@ -26,7 +26,7 @@
                 @include('backend.back_layouts.breadcrumb')
                 <!-- end Breadcrumb menu -->
                 
-							 @if (session()->has('success'))
+				@if (session()->has('success'))
                   <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
                       <p>{{session()->get('success')}}</p>
                       <a role="button" class="close-alert" data-dismiss="alert" aria-label="Close">

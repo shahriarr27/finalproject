@@ -653,7 +653,7 @@ div.dataTables_wrapper div.dataTables_filter {
 }
 
 
-#select-type {
+.select-type {
   background: transparent;
   color: rgb(255, 255, 255);
   border: none;
@@ -666,10 +666,16 @@ div.dataTables_wrapper div.dataTables_filter {
   position: relative;
   padding: 15px 5px 5px;
   box-shadow: none;
+  outline: none;
 }
-#select-type option{
+.select-type option{
   color: #000000;
   font-weight: 400;
+}
+select.select-type:focus{
+  outline: none;
+  box-shadow: none;
+  border-color: rgb(255, 255, 255);
 }
 
 .file-upload-select {

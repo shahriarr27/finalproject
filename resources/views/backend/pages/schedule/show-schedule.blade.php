@@ -49,12 +49,14 @@
                         <div class="card-body ">
                           <div class="row">
                             <div class="col-md-6 col-sm-6 col-6">
+                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                               <div class="btn-group show">
                                 <a href="{{route('schedule.create')}}" id="addRow"
                                   class="btn btn-info">
                                   Add New <i class="fa fa-plus"></i>
                                 </a>
                               </div>
+                              @endif
                             </div>
                             <div class="col-md-6 col-sm-6 col-6">
                               <div class="btn-group pull-right show">
@@ -96,6 +98,7 @@
                                           @foreach ($details as $scheduleDetails)
                                             @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-primary py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -113,12 +116,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-primary py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
   
                                             @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-success py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -136,12 +157,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-success py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-secondary py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -159,12 +198,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-secondary py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-danger py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -182,12 +239,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-danger py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-warning py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -205,12 +280,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-warning py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-info py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -228,12 +321,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-info py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-dark py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -251,12 +362,30 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-dark py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
                                             
                                             @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
                                             <td class="class-details-td">
+                                              @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
                                               <a href="schedule/{{$scheduleDetails->id}}/edit">
                                                   <div class="class-details border border-light py-2">
                                                     <p class="ccode"> {{$scheduleDetails->course_code}}</p>
@@ -274,6 +403,23 @@
                                                     <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
                                                   </div>
                                                 </a>
+                                                @else
+                                                <div class="class-details border border-light py-2">
+                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                    @foreach ($joinTable as $join)
+                                                      @if ($scheduleDetails->course_code == $join->course_code)
+                                                        <p class="tname text-info">
+                                                          {{$join->course_teacher}}
+                                                        </p>
+                                                        <p>
+                                                          {{$join->course_title}}
+                                                        </p>
+                                                      @endif
+                                                    @endforeach
+                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                                </div>
+                                                @endif
                                             </td>
                                             @endif
   
@@ -283,387 +429,673 @@
                                   </tr>
                                   <tr>
                                     <td class="text-center text-uppercase text-danger" style="min-width: 150px"><strong>MON<strong></td>
-                                      @foreach ($schedules as $item => $details)
+                                    @foreach ($schedules as $item => $details)
                                       @if ($item == 'mon')
-                                        {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
-                                          @foreach ($details as $scheduleDetails)
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-primary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @foreach ($details as $scheduleDetails)
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-primary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-primary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
 
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-success py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-success py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-success py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-secondary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-secondary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-secondary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-danger py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-danger py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-danger py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-warning py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-warning py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-warning py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-info py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-info py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-info py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-dark py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-dark py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-dark py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-light py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-light py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-light py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                        @endforeach
+                                      @endforeach
                                       @endif
                                     @endforeach
                                   </tr>
                                   <tr>
                                     <td class="text-center text-uppercase text-danger"><strong>TUE<strong></td>
-                                      @foreach ($schedules as $item => $details)
+                                    @foreach ($schedules as $item => $details)
                                       @if ($item == 'tue')
-                                        {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
-                                          @foreach ($details as $scheduleDetails)
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-primary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @foreach ($details as $scheduleDetails)
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-primary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-primary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
 
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-success py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-success py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-success py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-secondary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-secondary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-secondary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-danger py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-danger py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-danger py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-warning py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-warning py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-warning py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-info py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-info py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-info py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-dark py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-dark py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-dark py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-light py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-light py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-light py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                        @endforeach
+                                      @endforeach
                                       @endif
                                     @endforeach
                                   </tr>
@@ -671,192 +1103,335 @@
                                     <td class="text-center text-uppercase text-danger" style="min-width: 150px"><strong>WED<strong></td>
                                       @foreach ($schedules as $item => $details)
                                       @if ($item == 'wed')
-                                        {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
-                                          @foreach ($details as $scheduleDetails)
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-primary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @foreach ($details as $scheduleDetails)
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-primary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-primary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
 
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-success py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-success py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-success py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-secondary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-secondary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-secondary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-danger py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-danger py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-danger py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-warning py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-warning py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-warning py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-info py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-info py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-info py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-dark py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-dark py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-dark py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-light py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-light py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-light py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                        @endforeach
+                                      @endforeach
                                       @endif
                                     @endforeach
                                   </tr>
@@ -864,192 +1439,335 @@
                                     <td class="text-center text-uppercase text-danger" style="min-width: 150px"><strong>THR<strong></td>
                                       @foreach ($schedules as $item => $details)
                                       @if ($item == 'thr')
-                                        {{-- <td class="text-center text-uppercase text-danger"><strong>{{ $item }}<strong></td> --}}
-                                          @foreach ($details as $scheduleDetails)
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-primary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @foreach ($details as $scheduleDetails)
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-primary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-primary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
 
-                                          @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-success py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      @if ($scheduleDetails->course_year == '1st Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-success py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-success py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-secondary py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-secondary py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-secondary py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-danger py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '2nd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-danger py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-danger py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-warning py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-warning py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-warning py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-info py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '3rd Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-info py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-info py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-dark py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '1st Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-dark py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-dark py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                          
-                                          @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
-                                          <td class="class-details-td">
-                                            <a href="schedule/{{$scheduleDetails->id}}/edit">
-                                                <div class="class-details border border-light py-2">
-                                                  <p class="ccode"> {{$scheduleDetails->course_code}}</p>
-                                                  <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
-                                                    @foreach ($joinTable as $join)
-                                                      @if ($scheduleDetails->course_code == $join->course_code)
-                                                        <p class="tname text-info">
-                                                          {{$join->course_teacher}}
-                                                        </p>
-                                                        <p>
-                                                          {{$join->course_title}}
-                                                        </p>
-                                                      @endif
-                                                    @endforeach
-                                                  <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
-                                                </div>
-                                              </a>
-                                          </td>
+                                      
+                                      @if ($scheduleDetails->course_year == '4th Year' && $scheduleDetails->course_semester == '2nd Semester')
+                                      <td class="class-details-td">
+                                        @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                                        <a href="schedule/{{$scheduleDetails->id}}/edit">
+                                            <div class="class-details border border-light py-2">
+                                              <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                              <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                                @foreach ($joinTable as $join)
+                                                  @if ($scheduleDetails->course_code == $join->course_code)
+                                                    <p class="tname text-info">
+                                                      {{$join->course_teacher}}
+                                                    </p>
+                                                    <p>
+                                                      {{$join->course_title}}
+                                                    </p>
+                                                  @endif
+                                                @endforeach
+                                              <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                            </div>
+                                          </a>
+                                          @else
+                                          <div class="class-details border border-light py-2">
+                                            <p class="ccode"> {{$scheduleDetails->course_code}}</p>
+                                            <p class="ctime fw-bold">{{ date('g:i A', strtotime($scheduleDetails->startTime)). ' - ' .date('g:i A', strtotime($scheduleDetails->endTime))}}</p>
+                                              @foreach ($joinTable as $join)
+                                                @if ($scheduleDetails->course_code == $join->course_code)
+                                                  <p class="tname text-info">
+                                                    {{$join->course_teacher}}
+                                                  </p>
+                                                  <p>
+                                                    {{$join->course_title}}
+                                                  </p>
+                                                @endif
+                                              @endforeach
+                                            <p class="rno">Room: <strong>{{$scheduleDetails->schedule_room}}</strong></p>
+                                          </div>
                                           @endif
+                                      </td>
+                                      @endif
 
-                                        @endforeach
+                                      @endforeach
                                       @endif
                                     @endforeach
                                   </tr>

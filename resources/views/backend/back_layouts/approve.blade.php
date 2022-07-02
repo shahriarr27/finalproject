@@ -103,7 +103,7 @@
                       @if ($id_info->reg_type == 'student')
 											<div
 												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-												<input class="mdl-textfield__input" type="text" id="designation" name="designation" value="{{ $id_info->student_session }}" disabled>
+												<input class="mdl-textfield__input" type="text" name="student_session" value="{{ $id_info->student_session }}" disabled>
 												<label class="mdl-textfield__label">Session</label>
 											</div>
                       @elseif ($id_info->reg_type == 'teacher')
@@ -122,15 +122,29 @@
                       @if ($id_info->reg_type == 'student')
 											<div
 												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-												<input class="mdl-textfield__input" type="text" id="designation" name="designation" value="{{ $id_info->student_id }}" disabled>
+												<input class="mdl-textfield__input" type="text" name="student_id" value="{{ $id_info->student_id }}" disabled>
 												<label class="mdl-textfield__label">Student ID</label>
 											</div>
                       @endif
-
-											@error('designation')
-													<div class="text-danger text-sm">{{ $message }}</div>
-											@enderror
 										</div>
+											<div class="col-lg-6 p-t-20">
+												@if ($id_info->reg_type == 'student')
+												<div
+													class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+													<input class="mdl-textfield__input" type="text" name="student_year" value="{{ $id_info->student_year }}" disabled>
+													<label class="mdl-textfield__label">Year</label>
+												</div>
+												@endif
+											</div>
+											<div class="col-lg-6 p-t-20">
+												@if ($id_info->reg_type == 'student')
+												<div
+													class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+													<input class="mdl-textfield__input" type="text" name="student_semester" value="{{ $id_info->student_semester }}" disabled>
+													<label class="mdl-textfield__label">Semester</label>
+												</div>
+												@endif
+											</div>
 										<div class="col-lg-6 p-t-20">
 											<div
 												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width select-custom">

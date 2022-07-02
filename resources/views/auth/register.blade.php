@@ -128,42 +128,35 @@
                             </div>
                         </div>
                         @error('profile_picture')
-                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                            <div class="text-danger text-sm" style="margin-top: 10px; margin-bottom:10px">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-lg-6 p-t-5">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth select-width"
-                            onChange="check(this);">
-                            <label for="sample1" class="text-sm text-white mb-2 select-reg"><i
-                                    class="zmdi zmdi-assignment-account"></i> Gender</label>
-                            <input class="mdl-textfield__input" type="text" id="sample1" name="gender"
-                                value="{{ old('gender') }}" readonly tabIndex="-1"
-                                placeholder="Select">
-                            <label for=" sample2" class="pull-right margin-0">
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            </label>
-                            <ul data-mdl-for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                <li class="mdl-menu__item" value="male">Male</li>
-                                <li class="mdl-menu__item" value="female">Female</li>
-                            </ul>
-                        </div>
+                        <label class="text-white text-sm" style="display: flex; align-items:center">
+                            <i class="zmdi zmdi-assignment-account"
+                                style="font-size:20px; margin: 0px 10px 0px 5px"></i> Gender</label>
+                        <select class="select-type" name="gender">
+                            <option value=" "{{ old('gender') == '' ? 'selected' : '' }}>Select gender</option>
+                            <option value="male"{{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                            <option value="female"{{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                        </select>
                         @error('gender')
-                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                            <div class="text-danger text-sm" style="margin-top: -10px; margin-bottom:10px">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-lg-6  p-t-5">
                         <label class="text-white text-sm" style="display: flex; align-items:center">
                             <i class="zmdi zmdi-assignment-account"
                                 style="font-size:20px; margin: 0px 10px 0px 5px"></i> Register As</label>
-                        <select id="select-type" name="reg_type" onChange="check(this);">
-                            <option value="{{old('reg_type')}}">Select option</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="student">Student</option>
-                            <option value="staff">Staff</option>
+                        <select id="select_type" class="select-type" name="reg_type" onChange="check(this);">
+                            <option value=""{{ old('reg_type') == '' ? 'selected' : '' }}>Select option</option>
+                            <option value="teacher" {{ old('reg_type') == 'teacher' ? 'selected' : '' }}>Teacher</option>
+                            <option value="student" {{ old('reg_type') == 'student' ? 'selected' : '' }}>Student</option>
+                            <option value="staff" {{ old('reg_type') == 'staff' ? 'selected' : '' }}>Staff</option>
                             <option value="super_admin" hidden>Super Admin</option>
                         </select>
                         @error('reg_type')
-                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                            <div class="text-danger text-sm" style="margin-top: -10px; margin-bottom:10px">{{ $message }}</div>
                         @enderror
                     </div>
                     <div id="teacher_fields" style="display:none;">
@@ -177,7 +170,7 @@
                             </div>
                         </div>
                         @error('designation')
-                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">{{ $message }}</div>
+                            <div class="text-danger text-sm" style="margin-top: -20px; margin-bottom:10px">Designation is required</div>
                         @enderror
                     </div>
                     <div id="student_fields" style="display:none;">
@@ -189,7 +182,7 @@
                                     <span class="focus-input100" data-placeholder="&#x270E;"></span>
                                 </div>
                                 @error('student_id')
-                                    <div class="text-danger text-sm">{{ $message }}</div>
+                                    <div class="text-danger text-sm"  style="margin-top: -20px; margin-bottom:20px">Student ID is required</div>
                                 @enderror
                             </div>
                             <div class="col-lg-6 p-t-5">
@@ -199,16 +192,47 @@
                                     <span class="focus-input100" data-placeholder="&#x270E;"></span>
                                 </div>
                                 @error('student_session')
-                                    <div class="text-danger text-sm">{{ $message }}</div>
+                                    <div class="text-danger text-sm"  style="margin-top: -20px; margin-bottom:20px">Session is required</div>
                                 @enderror
                             </div>
+                            
+                          <div class="col-lg-6 p-t-5">
+                            <label class="text-white text-sm" style="display: flex; align-items:center">
+                                <i class="material-icons"
+                                    style="font-size:20px; margin: 0px 10px 0px 5px">
+                                    view_timeline</i> Year</label>
+                            <select class="select-type" name="student_year">
+                                <option value="{{old('student_year')}}">Select year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                            @error('student_year')
+                              <div class="text-danger text-sm"  style="margin-top: -10px; margin-bottom:10px">Select a year</div>
+                            @enderror
+                          </div>
+                          <div class="col-lg-6 p-t-5">
+                            <label class="text-white text-sm" style="display: flex; align-items:center">
+                                <i class="material-icons"
+                                    style="font-size:20px; margin: 0px 10px 0px 5px">
+                                    view_timeline</i> Semester</label>
+                            <select class="select-type" name="student_semester">
+                                <option value="{{old('student_semester')}}">Select semester</option>
+                                <option value="1st Semester">1st Semester</option>
+                                <option value="2nd Semester">2nd Semester</option>
+                            </select>
+                            @error('student_semester')
+                              <div class="text-danger text-sm"  style="margin-top: -10px; margin-bottom:10px">Select a semester</div>
+                            @enderror
+                          </div>
                         </div>
                     </div>
 
                 </div>
                 <!-- Validation Errors -->
                 {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
-                <div class="container-login100-form-btn">
+                <div class="container-login100-form-btn mt-4">
                     <button type="submit" class="login100-form-btn">
                         Register
                     </button>

@@ -100,120 +100,6 @@
 					</div>
 					<!-- end widget -->
 
-					{{-- <div class="row">
-						<div class="col-md-9 col-sm-12">
-							<div class="card">
-								<div class="card-head">
-									<header>Calendar</header>
-								</div>
-								<div class="card-body">
-									<div class="panel-body">
-										<div id="calendar" class="has-toolbar"> </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-12">
-							<div class="card-box">
-								<div class="card-head">
-									<header>Draggable Event</header>
-								</div>
-								<div class="card-body">
-									<div id='external-events'>
-										<div class="fc-event fc-event-success" data-class="fc-event-success">Work</div>
-										<div class="fc-event fc-event-warning" data-class="fc-event-warning">Personal
-										</div>
-										<div class="fc-event fc-event-primary" data-class="fc-event-primary">Important
-										</div>
-										<div class="fc-event fc-event-danger" data-class="fc-event-danger">Travel</div>
-										<div class="fc-event fc-event-info" data-class="fc-event-info">Friends</div>
-										<br>
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id='drop-remove'>
-											<label class="custom-control-label" for="drop-remove">Remove after
-												drop</label>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div> --}}
-
-					<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="addEventTitle">Add Event</h5>
-									<h5 class="modal-title" id="editEventTitle">Edit Event</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div class="modal-body">
-									<form class="">
-										<input type="hidden" id="id" name="id">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label>Title</label>
-													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Title" name="title"
-															id="title">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12 mb-4">
-												<label>Category</label>
-												<select class="form-select" id="categorySelect">
-													<option id="work" value="fc-event-success">Work</option>
-													<option id="personal" value="fc-event-warning">Personal</option>
-													<option id="important" value="fc-event-primary">Important</option>
-													<option id="travel" value="fc-event-danger">Travel</option>
-													<option id="friends" value="fc-event-info">Friends</option>
-												</select>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-6">
-												<div class="form-group">
-													<label>Start Date</label>
-													<input type="text" class="form-control datetimepicker" placeholder="Start Date"
-														name="starts_at" id="starts-at">
-												</div>
-											</div>
-											<div class="col-6">
-
-												<div class="form-group">
-													<label>End Date</label>
-													<input type="text" class="form-control datetimepicker" placeholder="End Date"
-														name="ends_at" id="ends-at">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label>Event Details</label>
-													<textarea id="eventDetails" name="eventDetails" placeholder="Enter Details"
-														class="form-control"></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="modal-footer bg-whitesmoke pr-0">
-											<button type="button" class="btn btn-round btn-primary" id="add-event">Add
-												Event</button>
-											<button type="button" class="btn btn-round btn-primary" id="edit-event">Edit
-												Event</button>
-											<button type="button" id="close" class="btn btn-danger"
-												data-bs-dismiss="modal">Close</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- start feed -->
 					
 					<div class="row">
 						<!-- Activity feed start -->
@@ -318,7 +204,7 @@
 						<!-- Activity feed end -->
 					</div>
 					<!-- start new student list -->
-					@if (Auth::user()->admin_role == 'super_admin')
+					@if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'staff')
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="card  card-box">

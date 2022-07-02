@@ -23,7 +23,7 @@ class CreateCourseTable extends Migration
             $table->string('course_hrs');
             $table->string('course_teacher');
             $table->string('course_image');
-            $table->string('course_file');
+            $table->string('course_file')->nullable();
             $table->string('course_details');
             $table->timestamps();
         });

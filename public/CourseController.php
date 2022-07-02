@@ -69,9 +69,6 @@ class CourseController extends Controller
             $filefilename = time().$name;
             $request->file('course_file')->storeAs('public/course_files',  $filefilename);
         }
-        else{
-            $filefilename = null;
-        }
 
         $course = Course::create([
             'course_code' => $request->course_code,
@@ -161,7 +158,7 @@ class CourseController extends Controller
             $file = $request->file('course_image')->getClientOriginalName();
             // $extension = $request->file('course_image')->getClientOriginalExtension();
             $filename = time().$file;
-            $request->file('course_image')->storeAs('public/course_image/',  $filename);
+            $request->file('course_image')->storeAs('public/course_image',  $filename);
             $edit_course->course_image = $filename;
         }
 
@@ -177,9 +174,6 @@ class CourseController extends Controller
             $filefilename = time().$file;
             $request->file('course_file')->storeAs('public/course_files',  $filefilename);
             $edit_course->course_file= $filefilename;
-        }
-        else{
-            $filefilename = null;
         }
 
         $edit_course->update();

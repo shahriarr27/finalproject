@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('designation')->nullable();
             $table->integer('student_id')->nullable();
             $table->string('student_session')->nullable();
+            $table->string('student_year')->nullable();
+            $table->string('student_semester')->nullable();
             $table->boolean('approval')->default(0)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

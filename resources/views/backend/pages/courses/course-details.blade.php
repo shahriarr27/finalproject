@@ -92,7 +92,9 @@
 															<p><b>Attached Files:</b></p>
 															<p><a href="{{ url('storage/course_files/'.$course_details->course_file) }}">{{$course_details->course_file}}</a></p>
 														</div>
+														@if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'staff')
                             <a href="{{$course_details->id}}/edit" class="btn btn-sm btn-info">Edit Course</a>
+														@endif
 													</div>
 												</div>
 											</div>
