@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $valid = $request->validate([
+        $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'name' => ['required', 'string', 'max:255'],
@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
         ]);
         if($request->hasFile('profile_picture')){
             $name = $request->file('profile_picture')->getClientOriginalName();
-            $filename = time().$name;
+            $filename = time().'_'.$name;
             $request->file('profile_picture')->storeAs('public/profile_pictures',  $filename);
         }
 

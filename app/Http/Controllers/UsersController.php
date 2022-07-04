@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class UsersController extends Controller
 {
@@ -80,6 +81,11 @@ class UsersController extends Controller
             return redirect('/dashboard')->with('success', $user->name.'\'s registration has been approved!');
         }
         elseif($user->approval ==0){
+            $destination = storage_path('app/public/profile_pictures/'.$user->profile_picture);
+
+            if(File::exists($destination)){
+                File::delete($destination);
+            };
             $user->delete();
             return redirect('/dashboard')->with('success', $user->name.'\'s registration has been Canceled!');
         }

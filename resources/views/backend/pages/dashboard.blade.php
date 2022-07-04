@@ -41,7 +41,7 @@
 									<span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
 									<div class="info-box-content">
 										<span class="info-box-text">Total Users</span>
-										<span class="info-box-number">{{count($users)}}</span>
+										<span class="info-box-number">{{count($users->where('approval', 1))}}</span>
 										<div class="progress">
 											<div class="progress-bar" style="width: {{count($users)}}%"></div>
 										</div>
@@ -56,9 +56,9 @@
 									<span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
 									<div class="info-box-content">
 										<span class="info-box-text">Students</span>
-										<span class="info-box-number">{{count($users->where('reg_type', 'student'))}}</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'student')->where('approval', 1))}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'student'))}}%"></div>
+											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'student')->where('approval', 1))}}%"></div>
 										</div>
 									</div>
 									<!-- /.info-box-content -->
@@ -71,9 +71,9 @@
 									<span class="info-box-icon push-bottom"><i class="material-icons">school</i></span>
 									<div class="info-box-content">
 										<span class="info-box-text">Teachers</span>
-										<span class="info-box-number">{{count($users->where('reg_type', 'teacher'))}}</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'teacher')->where('approval', 1))}}</span>
 										<div class="progress">
-											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'teacher'))}}%"></div>
+											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'teacher')->where('approval', 1))}}%"></div>
 										</div>
 									</div>
 									<!-- /.info-box-content -->
@@ -86,7 +86,7 @@
 									<span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
 									<div class="info-box-content">
 										<span class="info-box-text">Staff</span>
-										<span class="info-box-number">{{count($users->where('reg_type', 'staff'))}}</span>
+										<span class="info-box-number">{{count($users->where('reg_type', 'staff')->where('approval', 1))}}</span>
 										<div class="progress">
 											<div class="progress-bar" style="width: {{count($users->where('reg_type', 'staff'))}}%"></div>
 										</div>

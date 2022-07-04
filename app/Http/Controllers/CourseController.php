@@ -61,12 +61,12 @@ class CourseController extends Controller
         
         if($request->hasFile('course_image')){
             $name = $request->file('course_image')->getClientOriginalName();
-            $filename = time().$name;
+            $filename = time().'_'.$name;
             $request->file('course_image')->storeAs('public/course_image',  $filename);
         }
         if($request->hasFile('course_file')){
             $name = $request->file('course_file')->getClientOriginalName();
-            $filefilename = time().$name;
+            $filefilename = time().'_'.$name;
             $request->file('course_file')->storeAs('public/course_files',  $filefilename);
         }
         else{
@@ -160,7 +160,7 @@ class CourseController extends Controller
             };
             $file = $request->file('course_image')->getClientOriginalName();
             // $extension = $request->file('course_image')->getClientOriginalExtension();
-            $filename = time().$file;
+            $filename = time().'_'.$file;
             $request->file('course_image')->storeAs('public/course_image/',  $filename);
             $edit_course->course_image = $filename;
         }
@@ -174,7 +174,7 @@ class CourseController extends Controller
             };
             $file = $request->file('course_file')->getClientOriginalName();
             // $extension = $request->file('course_file')->getClientOriginalExtension();
-            $filefilename = time().$file;
+            $filefilename = time().'_'.$file;
             $request->file('course_file')->storeAs('public/course_files',  $filefilename);
             $edit_course->course_file= $filefilename;
         }

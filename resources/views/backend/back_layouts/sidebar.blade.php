@@ -38,20 +38,20 @@
                         </a>
                      </li>
                  @endif
-                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '1st Semester'))
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || Auth::user()->reg_type == 'staff' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '1st Semester'))
                  <li class="nav-item {{ (request()->path() == '1-1schedule') ? 'active' : '' }}">
                     <a href="{{route('1-1schedule')}}" class="nav-link "> <span class="title">1st Year 1st Semester</span>
                     </a>
                  </li>
                  @endif
                  
-                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '2nd Semester'))
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || Auth::user()->reg_type == 'staff' || (Auth::user()->student_year == '1st Year' && Auth::user()->student_semester == '2nd Semester'))
                  <li class="nav-item {{ (request()->path() == '1-2schedule') ? 'active' : '' }}">
                     <a href="{{route('1-2schedule')}}" class="nav-link "> <span class="title">1st Year 2nd Semester</span>
                     </a>
                  </li>
                  @endif
-                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher')
+                 @if (Auth::user()->admin_role == 'super_admin' || Auth::user()->reg_type == 'teacher' || Auth::user()->reg_type == 'staff')
                  <li class="nav-item {{ (request()->path() == 'schedule') ? 'active' : '' }}">
                     <a href="{{route('schedule.index')}}" class="nav-link "> <span class="title">All Schedule</span>
                     </a>
